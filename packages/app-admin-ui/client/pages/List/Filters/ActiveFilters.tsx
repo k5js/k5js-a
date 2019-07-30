@@ -16,7 +16,26 @@ export const elementOffsetStyles = {
   marginRight: gridSize / 2,
 };
 
-export default function ActiveFilters({ list }) {
+export type FilterType = {
+  field: {
+    label: string;
+    list: object;
+    path: string;
+    type: string;
+  };
+  filter: {
+    type: string;
+    label: string;
+    getInitialValue: () => string;
+  };
+  label: string;
+  value: string;
+};
+type Props = {
+  list: object;
+};
+
+export default function ActiveFilters({ list }: Props) {
   const { filters, onAdd, onRemove, onRemoveAll, onUpdate } = useListFilter(list.key);
 
   return (

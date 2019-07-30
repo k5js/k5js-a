@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, keyframes } from '@emotion/core';
-import { Component } from 'react';
+import { Component, ElementType } from 'react';
 
 const pulse = keyframes`
   from { transform: scale3d(1, 1, 1); }
@@ -26,7 +26,19 @@ const animations = {
   tada,
 };
 
-export default class Animation extends Component {
+type Props = {
+  name: keyof typeof animations;
+  tag: ElementType;
+  duration: string;
+  isInfinite: boolean;
+  timing: string;
+};
+
+type State = {
+  hasAnimation: boolean;
+  name: string;
+};
+export default class Animation extends Component<Props, State> {
   state = {
     hasAnimation: true,
     name: this.props.name,

@@ -22,7 +22,14 @@ const SelectedCount = styled.div({
   marginRight: gridSize,
 });
 
-export default function ListManage(props) {
+type Props = {
+  list: object;
+  onDeleteMany: (x0: any) => void;
+  onUpdateMany: (x0: any) => void;
+  selectedItems: Array<string>;
+};
+
+export default function ListManage(props: Props) {
   const { onDeleteMany, onUpdateMany, selectedItems } = props;
   const [deleteModalIsVisible, setDeleteModal] = useState(false);
   const [updateModalIsVisible, setUpdateModal] = useState(false);

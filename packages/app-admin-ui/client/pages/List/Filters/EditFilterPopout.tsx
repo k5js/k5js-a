@@ -3,7 +3,15 @@ import React, { Component } from 'react';
 import { POPOUT_GUTTER } from '../../../components/Popout';
 import PopoutForm from './PopoutForm';
 
-export default class EditFilterPopout extends Component {
+type Props = {
+  filter: object;
+  onChange: (x0: Event) => void;
+};
+type State = {
+  value: string;
+};
+
+export default class EditFilterPopout extends Component<Props, State> {
   state = { value: this.props.filter.value };
 
   onChangeFilter = value => {

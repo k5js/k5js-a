@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import { useAdminMeta } from '../providers/AdminMeta';
 
-const DocTitle = ({ title }) => {
+type Props = {
+  title: string;
+};
+
+const DocTitle = ({ title }: Prosp) => {
   const { name } = useAdminMeta();
 
   useEffect(() => {
@@ -9,6 +13,6 @@ const DocTitle = ({ title }) => {
   }, [title]);
 
   return null;
-};
+}
 
 export default DocTitle;

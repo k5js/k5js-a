@@ -3,6 +3,19 @@ import { jsx } from '@emotion/core';
 import { Component, useMemo } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
+type Height = number | string;
+type Props = {
+  autoScroll: boolean | HTMLElement;
+  initialHeight: Height;
+  onChange?: (x0: Height) => any;
+  // render: (x0: { ref: Ref<any> }) => Node;
+  render: (x0: { ref: $TSFixMe }) => Node;
+};
+type State = {
+  height: Height;
+  isTransitioning: boolean;
+};
+
 function Memoize({ children, deps }) {
   return useMemo(children, deps);
 }

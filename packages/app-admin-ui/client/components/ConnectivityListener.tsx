@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { withToastManager } from 'react-toast-notifications';
 
-class ConnectivityListener extends Component {
+type Props = {
+  toastManager: $TSFixMe;
+};
+
+type State = {
+  isOnline: boolean;
+};
+
+class ConnectivityListener extends Component<Props, State> {
   state = { isOnline: window ? window.navigator.onLine : false };
   componentDidMount() {
     window.addEventListener('online', this.onLine, false);

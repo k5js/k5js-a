@@ -3,19 +3,27 @@ import { useMutation } from '@apollo/react-hooks';
 import { Button } from '@arch-ui/button';
 import Confirm from '@arch-ui/confirm';
 
-export default function DeleteItemModal({ isOpen, item, list, onClose, onDelete }) {
-  const [deleteItem, { loading }] = useMutation(list.deleteMutation);
+type Props = {
+  isOpen: boolean;
+  itemIds: Array<string>;
+  list: object;
+  onClose: () => void;
+  onDelete: (x0: Promise<any>) => void;
+};
+
+export default function DeleteManyModal({ isOpen, itemIds, list, onClose, onDelete }: Props) {
+  const [deleteItems, { loading }] = useMutation(list.deleteManyMutation);
   return (
     <Confirm
       isOpen={isOpen}
-      onKeyDown={e => {
-        if (e.key === 'Escape' && !loading) {
+      onKeyDown={event => {
+        if (event.key === 'Escape' && !loading) {
           onClose();
         }
       }}
     >
       <p style={{ marginTop: 0 }}>
-        Are you sure you want to delete <strong>{item._label_}</strong>?
+        Are you sure you want to delete <strong>{list.formatCount(itemIds)}</strong>?
       </p>
       <footer>
         <Button
@@ -23,7 +31,9 @@ export default function DeleteItemModal({ isOpen, item, list, onClose, onDelete 
           variant="ghost"
           onClick={() => {
             if (loading) return;
-            onDelete(deleteItem({ variables: { id: item.id } }));
+            deleteItems({
+              variables: { ids: itemIds },
+            }).then(onDelete);
           }}
         >
           Delete

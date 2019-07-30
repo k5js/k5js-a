@@ -1,11 +1,17 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
+import React, { ElementType } from 'react';
 
 import { StopIcon } from '@arch-ui/icons';
 import { colors } from '@arch-ui/theme';
 import { Container } from '@arch-ui/layout';
 
-export default function PageError({ children, Icon, ...props }) {
+type Props = {
+  children: Node;
+  Icon: ElementType;
+};
+
+export default function PageError({ children, Icon, ...props }: Props) {
   return (
     <Container>
       <div

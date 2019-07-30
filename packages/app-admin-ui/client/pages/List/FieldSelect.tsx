@@ -26,7 +26,17 @@ export const pseudoLabelField = { label: 'Label', path: '_label_' };
  * and returning it during `onChange`.
  */
 
-export default class FieldSelect extends Component {
+type FieldType = object;
+export type FieldSelectProps = {
+  fields: Array<FieldType>;
+  onChange: (x0: FieldType) => void;
+  value: FieldType | Array<FieldType>;
+  includeLabelField: boolean;
+};
+
+export const pseudoLabelField = { label: 'Label', path: '_label_' };
+
+export default class FieldSelect extends Component<FieldSelectProps> {
   constructor(props) {
     super(props);
     const { fields, includeLabelField } = props;

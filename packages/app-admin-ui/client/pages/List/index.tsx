@@ -37,7 +37,18 @@ const HeaderInset = props => (
   <div css={{ paddingLeft: gridSize * 2, paddingRight: gridSize * 2 }} {...props} />
 );
 
-export function ListLayout(props) {
+type Props = {
+  adminMeta: object;
+  list: object;
+  routeProps: object;
+};
+type LayoutProps = Props & {
+  items: Array<object>;
+  itemCount: number;
+  queryErrors: Array<object>;
+};
+
+export function ListLayout(props: LayoutProps) {
   const { items, itemCount, queryErrors, routeProps, query } = props;
   const measureElementRef = useRef();
   const { list, openCreateItemModal } = useList();
@@ -93,7 +104,7 @@ export function ListLayout(props) {
 
   const cypressCreateId = 'list-page-create-button';
   const cypressFiltersId = 'ks-list-active-filters';
-
+  
   const Render = ({ children }) => children();
   return (
     <main>
@@ -257,7 +268,7 @@ export function ListLayout(props) {
   );
 }
 
-export function List(props) {
+export function List(props: Props) {
   const { list, query, routeProps } = props;
 
   // get item data
@@ -339,7 +350,7 @@ export function List(props) {
   );
 }
 
-export default function ListData(props) {
+export default function ListData(props: Props) {
   const { list } = props;
   const { urlState } = useListUrlState(list.key);
 

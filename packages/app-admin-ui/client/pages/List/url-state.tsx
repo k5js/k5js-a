@@ -1,5 +1,34 @@
 import querystring from 'querystring';
+import * as React from 'react';
+import List from '../../classes/List';
+// $TSFixMe flow doesn't recognise the `*/Controller` entry point
+import { FieldControllerType } from '@keystone-alpha/fields/Controller';
 import { pseudoLabelField } from './FieldSelect';
+import { AdminMeta } from '../../providers/AdminMeta';
+
+export type SortByType = {
+  field: {
+    label: string;
+    path: string;
+  };
+  direction: "ASC" | "DESC";
+};
+
+export type FilterType = {
+  field: FieldControllerType;
+  label: string;
+  type: string;
+  value: string;
+};
+
+export type SearchType = {
+  currentPage: number;
+  pageSize: number;
+  search: string;
+  fields: Array<FieldControllerType>;
+  sortBy: SortByType;
+  filters: Array<FilterType>;
+};
 
 // ==============================
 // Query string encode/decode
@@ -110,7 +139,16 @@ const encodeFilter = filter => {
   return [`${field.path}_${type}`, JSON.stringify(value)];
 };
 
-export const decodeSearch = (search, props) => {
+type Props = {
+  adminMeta: AdminMeta;
+  children: (x0: any) => Node;
+  history: object;
+  list: object;
+  location: object;
+  match: object;
+};
+
+export const decodeSearch = (search: string, props: Props): SearchType => {
   const query = querystring.parse(search.replace('?', ''));
   const searchDefaults = getSearchDefaults(props);
   const params = Object.keys(query).reduce((acc, key) => {

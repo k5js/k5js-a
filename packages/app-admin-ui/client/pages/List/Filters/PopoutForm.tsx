@@ -29,7 +29,11 @@ const FooterButton = ({ isPrimary, ...props }) => (
   />
 );
 
-export default class FilterPopout extends Component {
+type Props = {
+  onSubmit: (x0: Event) => void;
+};
+
+export default class FilterPopout extends Component<Props> {
   onSubmit = event => {
     const { onSubmit } = this.props;
 
