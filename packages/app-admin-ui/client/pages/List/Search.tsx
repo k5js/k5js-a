@@ -17,7 +17,7 @@ import { elementOffsetStyles } from './Filters/ActiveFilters';
 export default function Search({ isLoading, list }) {
   const { searchValue, onChange, onClear, onSubmit } = useListSearch(list.key);
   const [value, setValue] = useState(searchValue);
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>();
 
   const hasValue = searchValue && searchValue.length;
   const Icon = hasValue ? XIcon : SearchIcon;
@@ -87,7 +87,20 @@ export default function Search({ isLoading, list }) {
   );
 }
 
-const Input = forwardRef((props, ref) => (
+type InputProps = {
+  autoCapitalize?: string;
+  autoComplete?: string;
+  autoCorrect?: string;
+  id?: string;
+  onChange?: $TSFixMe;
+  placeholder?: string;
+  name?: string;
+  value?: $TSFixMe;
+  type?: string;
+  ref?: $TSFixMe;
+}
+
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
   <input
     ref={ref}
     css={{

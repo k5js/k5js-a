@@ -5,7 +5,7 @@ type Props = {
   title: string;
 };
 
-const DocTitle = ({ title }: Prosp) => {
+const DocTitle = ({ title }: Props) => {
   const { name } = useAdminMeta();
 
   useEffect(() => {

@@ -14,7 +14,13 @@ import { gqlCountQueries } from '../../classes/List';
 
 import { useAdminMeta } from '../../providers/AdminMeta';
 
-const HomePage = ({ lists, data, adminPath }) => (
+type Props = {
+  adminPath?: string;
+  lists?: $TSFixMe;
+  data?: $TSFixMe;
+}
+
+const HomePage = ({ lists, data, adminPath }: Props) => (
   <main>
     <Container>
       <HeaderInset>

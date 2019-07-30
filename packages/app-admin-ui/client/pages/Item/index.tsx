@@ -61,6 +61,16 @@ const getRenderableFields = memoizeOne(list =>
     .filter(({ maybeAccess, config }) => !!maybeAccess.update || !!config.isReadOnly)
 );
 
+type Props = {
+  adminPath?:string;
+  list?:$TSFixMe;
+  item?: $TSFixMe;
+  itemErrors?: $TSFixMe;
+  onUpdate?:$TSFixMe;
+  updateItem?:$TSFixMe;
+  updateInProgress?: boolean;
+}
+
 const ItemDetails = ({
   adminPath,
   list,
@@ -69,7 +79,7 @@ const ItemDetails = ({
   onUpdate,
   updateItem,
   updateInProgress,
-}) => {
+}: Props) => {
   const [item, setItem] = useState(initialData);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
