@@ -98,7 +98,7 @@ type InputProps = {
   value?: $TSFixMe;
   type?: string;
   ref?: $TSFixMe;
-}
+};
 
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
   <input

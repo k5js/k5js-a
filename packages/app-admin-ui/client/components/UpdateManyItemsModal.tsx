@@ -22,14 +22,14 @@ type Props = {
   list?: $TSFixMe;
   onClose?: () => void;
   onUpdate?: () => void;
-}
+};
 
 type State = {
   item?: $TSFixMe;
   selectedFields?: $TSFixMe;
   validationErrors?: $TSFixMe;
   validationWarnings?: $TSFixMe;
-}
+};
 
 class UpdateManyModal extends Component<Props, State> {
   filterOption: $TSFixMe;

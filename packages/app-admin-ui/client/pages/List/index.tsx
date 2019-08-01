@@ -32,6 +32,7 @@ import { useListFilter, useListSelect, useListSort, useListUrlState } from './da
 import { captureSuspensePromises } from '@keystonejs/utils';
 
 import { useAdminMeta } from '../../providers/AdminMeta';
+import ListType from '../../classes/List';
 
 const HeaderInset = props => (
   <div css={{ paddingLeft: gridSize * 2, paddingRight: gridSize * 2 }} {...props} />
@@ -39,13 +40,14 @@ const HeaderInset = props => (
 
 type Props = {
   adminMeta: object;
-  list: object;
+  list: ListType;
   routeProps: object;
 };
 type LayoutProps = Props & {
-  items: Array<object>;
+  items: object[];
   itemCount: number;
-  queryErrors: Array<object>;
+  queryErrors: object[];
+  query: $TSFixMe;
 };
 
 export function ListLayout(props: LayoutProps) {

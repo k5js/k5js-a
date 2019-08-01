@@ -50,7 +50,7 @@ export default class List {
 
     this._fieldsByPath = arrayToObject(this.fields, 'path');
 
-      this.createMutation = gql`
+    this.createMutation = gql`
       mutation create($data: ${this.gqlNames.createInputName}!) {
         ${this.gqlNames.createMutationName}(data: $data) {
           id
@@ -113,7 +113,7 @@ export default class List {
   static getQueryArgs = ({ filters, ...args }) => {
     const queryArgs = Object.keys(args).map(
       // Using stringify to get the correct quotes depending on type
-    argName => `${argName}: ${JSON.stringify(args[argName])}`
+      argName => `${argName}: ${JSON.stringify(args[argName])}`
     );
     if (filters) {
       const filterArgs = filters.map(filter => filter.field.getFilterGraphQL(filter));

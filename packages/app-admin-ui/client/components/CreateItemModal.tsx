@@ -52,7 +52,7 @@ type Props = {
   onCreate: Function;
   isLoading: boolean;
   isOpen: boolean;
-}
+};
 
 function CreateItemModal({ prefillData = {}, isLoading, createItem, onClose, onCreate }: Props) {
   const { list, closeCreateItemModal, isCreateItemModalOpen } = useList();
