@@ -114,6 +114,7 @@ module.exports = {
         '@typescript-eslint/prefer-interface': 'off',
         'import/no-unresolved': 'off',
         '@typescript-eslint/explicit-member-accessibility': 'off',
+        'no-case-declarations': 'off',
       },
     },
   ],

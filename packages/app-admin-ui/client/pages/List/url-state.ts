@@ -1,10 +1,8 @@
 import querystring from 'querystring';
-import * as React from 'react';
 import List from '../../classes/List';
 // $TSFixMe flow doesn't recognise the `*/Controller` entry point
 import { FieldControllerType } from '@keystone-alpha/fields/Controller';
 import { pseudoLabelField } from './FieldSelect';
-import { AdminMeta } from '../../providers/AdminMeta';
 
 type DirectionType = 'ASC' | 'DESC';
 export type SortByType = {
@@ -142,7 +140,7 @@ const encodeFilter = filter => {
 };
 
 type Props = {
-  adminMeta: AdminMeta;
+  adminMeta: $TSFixMe;
   children: (x0: any) => Node;
   history: object;
   list: List;
