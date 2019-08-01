@@ -29,7 +29,7 @@ import PageLoading from './PageLoading';
 import { useList } from '../providers/List';
 import { validateFields, handleCreateUpdateMutationError } from '../util';
 
-let Render = ({ children }) => children();
+const Render = ({ children }) => children();
 
 const getValues = (fieldsObject, item) => mapKeys(fieldsObject, field => field.serialize(item));
 

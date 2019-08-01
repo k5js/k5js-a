@@ -51,7 +51,7 @@ type Props = {
   adminPath?: string;
 }
 
-export let ItemTitle = memo(function ItemTitle({ titleText, adminPath }: Props) {
+export let ItemTitle = memo<Props>(function ItemTitle({ titleText, adminPath }: Props) {
   let { list } = useList();
   const listHref = `${adminPath}/${list.path}`;
   let uiHooks = useUIHooks();

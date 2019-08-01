@@ -247,7 +247,6 @@ function PrimaryNavItems({
   const onRenderIndexPage = () => {
     hasRenderedIndexPage = true;
   };
-
   const pageNavItems =
     pages && pages.length
       ? pages

@@ -12,7 +12,7 @@ export default class List {
     readViews: Function;
   };
   fields: $TSFixMe;
-  fieldsByPath: { [index:string] : $TSFixMe };
+  fieldsByPath: { [index: string]: $TSFixMe };
   gqlNames: {
     createMutationName: any;
     createManyMutationName: any;
@@ -38,8 +38,8 @@ export default class List {
   plural: string;
   constructor(config, adminMeta, views) {
     this.config = config;
-    this.adminMeta = adminMeta; 
-    
+    this.adminMeta = adminMeta;
+
     // TODO: undo this
     Object.assign(this, config);
 

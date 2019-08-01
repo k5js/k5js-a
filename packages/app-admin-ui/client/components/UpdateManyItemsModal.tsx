@@ -12,7 +12,7 @@ import { LoadingIndicator } from '@arch-ui/loading';
 import { validateFields } from '../util';
 import CreateItemModal from './CreateItemModal';
 
-let Render = ({ children }) => children();
+const Render = ({ children }) => children();
 
 type Props = {
   updateItem?: $TSFixMe;
@@ -20,7 +20,7 @@ type Props = {
   isOpen?: boolean;
   items?: $TSFixMe;
   list?: $TSFixMe;
-  onClose?: ()=> void;
+  onClose?: () => void;
   onUpdate?: () => void;
 }
 
@@ -170,8 +170,8 @@ class UpdateManyModal extends Component<Props, State> {
             >
               <Render>
                 {() => {
-                  let [Field] = field.adminMeta.readViews([field.views.Field]);
-                  let onChange = useCallback(
+                  const [Field] = field.adminMeta.readViews([field.views.Field]);
+                  const onChange = useCallback(
                     value => {
                       this.setState(({ item }) => ({
                         item: {

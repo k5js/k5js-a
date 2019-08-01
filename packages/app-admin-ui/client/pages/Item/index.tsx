@@ -38,7 +38,7 @@ import { ItemTitle } from './ItemTitle';
 import { ItemProvider } from '../../providers/Item';
 import { useAdminMeta } from '../../providers/AdminMeta';
 
-let Render = ({ children }) => children();
+const Render = ({ children }) => children();
 
 const Form = styled.form({
   marginBottom: gridSize * 3,

@@ -28,9 +28,9 @@ export const pseudoLabelField = { label: 'Label', path: '_label_' };
 
 type FieldType = object;
 export type FieldSelectProps = {
-  fields?: Array<FieldType>;
+  fields?: FieldType[];
   onChange?: (x0: FieldType) => void;
-  value?: FieldType | Array<FieldType>;
+  value?: FieldType | FieldType[];
   includeLabelField?: boolean;
   isOptionDisabled?: $TSFixMe;
   innerRef?: $TSFixMe;
