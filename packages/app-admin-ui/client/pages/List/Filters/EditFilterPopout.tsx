@@ -47,7 +47,9 @@ export default class EditFilterPopout extends Component<Props, State> {
   render() {
     const { filter, target } = this.props;
     const { value } = this.state;
-    const [Filter] = filter.field.adminMeta.readViews([filter.field.views.Filter]);
+    let [Filter] = filter.field.hooks.Filter
+      ? [filter.field.hooks.Filter]
+      : filter.field.adminMeta.readViews([filter.field.views.Filter]);
     const headerTitle = filter.field.getFilterLabel(filter);
 
     return (

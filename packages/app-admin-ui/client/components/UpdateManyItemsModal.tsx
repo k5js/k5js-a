@@ -170,7 +170,9 @@ class UpdateManyModal extends Component<Props, State> {
             >
               <Render>
                 {() => {
-                  const [Field] = field.adminMeta.readViews([field.views.Field]);
+                  const [Field] = field.hooks.Field
+                    ? [field.hooks.Field]
+                    : field.adminMeta.readViews([field.views.Field]);
                   const onChange = useCallback(
                     value => {
                       this.setState(({ item }) => ({
