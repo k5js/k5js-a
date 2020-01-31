@@ -57,6 +57,7 @@ module.exports = class Keystone {
       addVersionToHttpHeaders: true,
       access: true,
     },
+    publicConfig = {},
   }) {
     this.name = name;
     this.defaultAccess = { list: true, field: true, custom: true, ...defaultAccess };
@@ -73,7 +74,7 @@ module.exports = class Keystone {
     this.registeredTypes = new Set();
     this._schemaNames = schemaNames;
     this.appVersion = appVersion;
-
+    this.publicConfig = publicConfig;
     this._listCRUDProvider = new ListCRUDProvider();
     this._customProvider = new CustomProvider({
       schemaNames,
@@ -413,7 +414,7 @@ module.exports = class Keystone {
       list => list.getAdminMeta({ schemaName })
     );
 
-    return { lists, name: this.name };
+    return { lists, name: this.name, appVersion: this.appVersion, publicConfig: this.publicConfig };
   }
 
   // It's not Keystone core's responsibility to create an executable schema, but
