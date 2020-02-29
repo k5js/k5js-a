@@ -59,7 +59,7 @@ module.exports = function({ adminMeta, entry, outputPath }) {
       test: /FIELD_TYPES/,
       use: [
         {
-          loader: '@keystonejs/field-views-loader',
+          loader: '@k5js/field-views-loader',
           options: {
             adminMeta,
           },
