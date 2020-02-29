@@ -1,12 +1,12 @@
 {
-  "name": "@arch-ui/common",
+  "name": "@k5ui/common",
   "description": "Common config used throughout @arch-ui Components and @keystonejs Admin UI.",
   "version": "0.0.9",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/common.cjs.js",
   "dependencies": {
-    "@arch-ui/theme": "^0.0.8"
+    "@k5ui/theme": "^0.0.0"
   },
   "module": "dist/common.esm.js"
 }
