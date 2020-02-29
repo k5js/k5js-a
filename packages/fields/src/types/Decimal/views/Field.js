@@ -1,12 +1,6 @@
 import React from 'react';
 
-import {
-  FieldContainer,
-  FieldLabel,
-  FieldDescription,
-  FieldInput,
-  Currency,
-} from '@k5ui/fields';
+import { FieldContainer, FieldLabel, FieldDescription, FieldInput, Currency } from '@k5ui/fields';
 import { Input } from '@k5ui/input';
 
 const TextField = ({ onChange, autoFocus, field, value, errors }) => {

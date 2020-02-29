@@ -1,10 +1,6 @@
 const { gen, sampleOne } = require('testcheck');
 const { Text, Relationship } = require('@k5js/fields');
-const {
-  multiAdapterRunners,
-  setupServer,
-  networkedGraphqlRequest,
-} = require('@k5js/test-utils');
+const { multiAdapterRunners, setupServer, networkedGraphqlRequest } = require('@k5js/test-utils');
 const cuid = require('cuid');
 
 const alphanumGenerator = gen.alphaNumString.notEmpty();
