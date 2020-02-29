@@ -8,6 +8,11 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.8.4",
+    "@emotion/core": "^10.0.27",
+    "@k5js/build-field-types": "^0.0.0",
+    "@k5js/fields": "^0.0.0",
+    "@k5js/utils": "^0.0.0",
     "@k5ui/color-utils": "^0.0.0",
     "@k5ui/fields": "^0.0.0",
     "@k5ui/hooks": "^0.0.0",
@@ -16,11 +21,6 @@
     "@k5ui/theme": "^0.0.0",
     "@k5ui/tooltip": "^0.0.0",
     "@k5ui/typography": "^0.0.0",
-    "@babel/runtime": "^7.8.4",
-    "@emotion/core": "^10.0.27",
-    "@k5js/build-field-types": "^0.0.0",
-    "@k5js/fields": "^0.0.0",
-    "@k5js/utils": "^0.0.0",
     "apply-ref": "^0.2.0",
     "get-selection-range": "^0.1.0",
     "image-extensions": "^1.1.0",
