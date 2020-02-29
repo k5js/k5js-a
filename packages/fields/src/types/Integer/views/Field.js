@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@arch-ui/fields';
-import { Input } from '@arch-ui/input';
+import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@k5ui/fields';
+import { Input } from '@k5ui/input';
 
 const TextField = ({ onChange, autoFocus, field, value, errors }) => {
   const handleChange = event => {

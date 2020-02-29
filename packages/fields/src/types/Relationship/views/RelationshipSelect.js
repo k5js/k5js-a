@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import Select from '@arch-ui/select';
+import Select from '@k5ui/select';
 import { components } from 'react-select';
 import 'intersection-observer';
 import { useState, useMemo, useRef, useEffect, forwardRef } from 'react';

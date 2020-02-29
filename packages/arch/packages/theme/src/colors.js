@@ -1,4 +1,4 @@
-import { lighten, darken, alpha } from '@arch-ui/color-utils';
+import { lighten, darken, alpha } from '@k5ui/color-utils';
 
 // colors with intention
 const intent = {

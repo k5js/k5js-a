@@ -4,8 +4,8 @@ const ensureError = require('ensure-error');
 const serializeError = require('serialize-error');
 const StackUtils = require('stack-utils');
 const cuid = require('cuid');
-const { omit } = require('@keystonejs/utils');
-const { logger } = require('@keystonejs/logger');
+const { omit } = require('@k5js/utils');
+const { logger } = require('@k5js/logger');
 
 const { NestedError } = require('./graphqlErrors');
 

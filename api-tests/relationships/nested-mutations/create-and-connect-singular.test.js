@@ -1,6 +1,6 @@
-const { Text, Relationship } = require('@keystonejs/fields');
+const { Text, Relationship } = require('@k5js/fields');
 const cuid = require('cuid');
-const { multiAdapterRunners, setupServer, graphqlRequest } = require('@keystonejs/test-utils');
+const { multiAdapterRunners, setupServer, graphqlRequest } = require('@k5js/test-utils');
 
 function setupKeystone(adapterName) {
   return setupServer({

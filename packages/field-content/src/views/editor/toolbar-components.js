@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { colors, gridSize } from '@arch-ui/theme';
-import { lighten, darken } from '@arch-ui/color-utils';
-import Tooltip from '@arch-ui/tooltip';
-import { A11yText } from '@arch-ui/typography';
+import { colors, gridSize } from '@k5ui/theme';
+import { lighten, darken } from '@k5ui/color-utils';
+import Tooltip from '@k5ui/tooltip';
+import { A11yText } from '@k5ui/typography';
 
 export let ToolbarButton = ({
   isActive,

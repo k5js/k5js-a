@@ -2,9 +2,9 @@
 
 import { jsx } from '@emotion/core';
 
-import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@arch-ui/fields';
-import { Input } from '@arch-ui/input';
-import { borderRadius, colors, gridSize } from '@arch-ui/theme';
+import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@k5ui/fields';
+import { Input } from '@k5ui/input';
+import { borderRadius, colors, gridSize } from '@k5ui/theme';
 
 import Preview from './preview';
 

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
-import { Alert } from '@arch-ui/alert';
-import { Input } from '@arch-ui/input';
-import { LoadingButton } from '@arch-ui/button';
-import { colors } from '@arch-ui/theme';
-import { PageTitle } from '@arch-ui/typography';
+import { Alert } from '@k5ui/alert';
+import { Input } from '@k5ui/input';
+import { LoadingButton } from '@k5ui/button';
+import { colors } from '@k5ui/theme';
+import { PageTitle } from '@k5ui/typography';
 
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';

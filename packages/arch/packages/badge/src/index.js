@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled from '@emotion/styled';
 
-import { colors } from '@arch-ui/theme';
+import { colors } from '@k5ui/theme';
 
 const boldBackgroundColor = {
   default: colors.N60,

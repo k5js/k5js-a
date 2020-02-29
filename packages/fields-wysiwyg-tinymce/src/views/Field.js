@@ -2,7 +2,7 @@
 
 import { Global, css, jsx } from '@emotion/core';
 
-import { FieldContainer, FieldLabel } from '@arch-ui/fields';
+import { FieldContainer, FieldLabel } from '@k5ui/fields';
 
 // MUST IMPORT for TinyMCE to work!
 // eslint-disable-next-line no-unused-vars

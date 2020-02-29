@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { format } from 'date-fns';
-import { TextDayPicker } from '@arch-ui/day-picker';
+import { TextDayPicker } from '@k5ui/day-picker';
 
 const FORMAT = 'YYYY-MM-DD';
 

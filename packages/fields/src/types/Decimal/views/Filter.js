@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from '@arch-ui/input';
+import { Input } from '@k5ui/input';
 
 const TextFilterView = ({ onChange, filter, field, innerRef, value }) => {
   const valueToString = value => {

@@ -2,9 +2,9 @@
 import { jsx } from '@emotion/core';
 import { useMemo } from 'react';
 import ReactSelect, { components as reactSelectComponents } from 'react-select';
-import { CheckIcon } from '@arch-ui/icons';
-import { colors, gridSize } from '@arch-ui/theme';
-import { uniformHeight } from '@arch-ui/common';
+import { CheckIcon } from '@k5ui/icons';
+import { colors, gridSize } from '@k5ui/theme';
+import { uniformHeight } from '@k5ui/common';
 
 export const CheckMark = ({ isDisabled, isFocused, isSelected }) => {
   let bg;

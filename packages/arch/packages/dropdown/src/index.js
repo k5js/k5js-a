@@ -6,9 +6,9 @@ import { createPortal } from 'react-dom';
 import styled from '@emotion/styled';
 import { jsx } from '@emotion/core';
 
-import { borderRadius, colors, gridSize, shadows } from '@arch-ui/theme';
+import { borderRadius, colors, gridSize, shadows } from '@k5ui/theme';
 import FocusTrap from 'focus-trap-react';
-import { withModalHandlers, slideDown } from '@arch-ui/modal-utils';
+import { withModalHandlers, slideDown } from '@k5ui/modal-utils';
 
 const ItemElement = props => {
   if (props.to) return <Link {...props} />;

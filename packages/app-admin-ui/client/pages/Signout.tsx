@@ -6,7 +6,7 @@ import gql from 'graphql-tag';
 
 import KeystoneLogo from '../components/KeystoneLogo';
 
-import { LoadingIndicator } from '@arch-ui/loading';
+import { LoadingIndicator } from '@k5ui/loading';
 
 import { useAdminMeta } from '../providers/AdminMeta';
 

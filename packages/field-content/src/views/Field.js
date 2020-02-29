@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { Component } from 'react';
 import { jsx } from '@emotion/core';
-import { colors } from '@arch-ui/theme';
+import { colors } from '@k5ui/theme';
 import Editor from './editor';
-import { FieldContainer, FieldLabel, FieldInput } from '@arch-ui/fields';
-import { inputStyles } from '@arch-ui/input';
+import { FieldContainer, FieldLabel, FieldInput } from '@k5ui/fields';
+import { inputStyles } from '@k5ui/input';
 
 class ErrorBoundary extends Component {
   state = {

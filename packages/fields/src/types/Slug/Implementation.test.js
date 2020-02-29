@@ -1,4 +1,4 @@
-import { multiAdapterRunners, setupServer, graphqlRequest } from '@keystonejs/test-utils';
+import { multiAdapterRunners, setupServer, graphqlRequest } from '@k5js/test-utils';
 
 import cuid from 'cuid';
 import Text from '../Text';

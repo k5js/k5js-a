@@ -12,12 +12,12 @@ import {
   endOfYear,
 } from 'date-fns';
 import { VariableSizeList as List } from 'react-window';
-import { ChevronLeftIcon, ChevronRightIcon } from '@arch-ui/icons';
+import { ChevronLeftIcon, ChevronRightIcon } from '@k5ui/icons';
 import { useLayoutEffect, useState, useRef, useMemo, useCallback } from 'react';
-import { borderRadius, colors } from '@arch-ui/theme';
+import { borderRadius, colors } from '@k5ui/theme';
 import { yearRange, months, getWeeksInMonth, isNumberInRange } from './utils';
 import { SelectMonth, SelectYear } from './selects';
-import { A11yText } from '@arch-ui/typography';
+import { A11yText } from '@k5ui/typography';
 import { Month } from './month';
 import { WeekLabels, Day } from './comps';
 import 'intersection-observer';

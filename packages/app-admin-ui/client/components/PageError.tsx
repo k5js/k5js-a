@@ -2,9 +2,9 @@
 import { jsx } from '@emotion/core';
 import React, { ElementType } from 'react';
 
-import { StopIcon } from '@arch-ui/icons';
-import { colors } from '@arch-ui/theme';
-import { Container } from '@arch-ui/layout';
+import { StopIcon } from '@k5ui/icons';
+import { colors } from '@k5ui/theme';
+import { Container } from '@k5ui/layout';
 
 type Props = {
   children: $TSFixMe;

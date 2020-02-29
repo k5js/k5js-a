@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { parse } from 'date-fns';
 import { DayPicker } from './DayPicker';
-import { Input } from '@arch-ui/input';
-import Select from '@arch-ui/select';
+import { Input } from '@k5ui/input';
+import Select from '@k5ui/select';
 
 const options = [
   '-12',

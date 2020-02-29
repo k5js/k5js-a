@@ -5,14 +5,14 @@ import { Fragment } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@arch-ui/fields';
-import { PlusIcon, PersonIcon, LinkExternalIcon } from '@arch-ui/icons';
-import { gridSize } from '@arch-ui/theme';
-import { IconButton } from '@arch-ui/button';
-import Tooltip from '@arch-ui/tooltip';
+import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@k5ui/fields';
+import { PlusIcon, PersonIcon, LinkExternalIcon } from '@k5ui/icons';
+import { gridSize } from '@k5ui/theme';
+import { IconButton } from '@k5ui/button';
+import Tooltip from '@k5ui/tooltip';
 
 import RelationshipSelect from './RelationshipSelect';
-import { ListProvider, useList } from '@keystonejs/app-admin-ui/components';
+import { ListProvider, useList } from '@k5js/app-admin-ui/components';
 
 const MAX_IDS_IN_FILTER = 100;
 

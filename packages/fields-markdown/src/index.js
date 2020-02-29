@@ -1,5 +1,5 @@
-import { Text } from '@keystonejs/fields';
-import { importView } from '@keystonejs/build-field-types';
+import { Text } from '@k5js/fields';
+import { importView } from '@k5js/build-field-types';
 
 export let Markdown = {
   type: 'Markdown',

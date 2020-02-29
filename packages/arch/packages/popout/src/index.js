@@ -4,9 +4,9 @@ import { jsx } from '@emotion/core';
 import { Component, forwardRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import { borderRadius, colors, gridSize, shadows } from '@arch-ui/theme';
+import { borderRadius, colors, gridSize, shadows } from '@k5ui/theme';
 import FocusTrap from 'focus-trap-react';
-import { withModalHandlers, springDown } from '@arch-ui/modal-utils';
+import { withModalHandlers, springDown } from '@k5ui/modal-utils';
 
 const ARROW_WIDTH = 30;
 const CHROME_GUTTER = 30;

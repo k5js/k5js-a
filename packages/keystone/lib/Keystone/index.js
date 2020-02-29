@@ -15,18 +15,18 @@ const {
   unique,
   filterValues,
   compose,
-} = require('@keystonejs/utils');
+} = require('@k5js/utils');
 const {
   validateFieldAccessControl,
   validateListAccessControl,
   validateCustomAccessControl,
   validateAuthAccessControl,
-} = require('@keystonejs/access-control');
+} = require('@k5js/access-control');
 const {
   startAuthedSession,
   endAuthedSession,
   commonSessionMiddleware,
-} = require('@keystonejs/session');
+} = require('@k5js/session');
 
 const {
   unmergeRelationships,
