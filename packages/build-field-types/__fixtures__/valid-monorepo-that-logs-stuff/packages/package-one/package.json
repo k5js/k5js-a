@@ -1,6 +1,6 @@
 {
   "name": "@my-cool-scope/package-one",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "dist/package-one.cjs.js",
   "module": "dist/package-one.esm.js",
   "license": "MIT",

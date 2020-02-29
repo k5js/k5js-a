@@ -1,6 +1,6 @@
 {
   "name": "two-entrypoints-one-module-one-not",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "dist/two-entrypoints-one-module-one-not.cjs.js",
   "license": "MIT",
   "private": true,

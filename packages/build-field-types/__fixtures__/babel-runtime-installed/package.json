@@ -1,6 +1,6 @@
 {
   "name": "babel-runtime-installed",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "dist/babel-runtime-installed.cjs.js",
   "module": "dist/babel-runtime-installed.esm.js",
   "license": "MIT",
