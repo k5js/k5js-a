@@ -1,4 +1,4 @@
-import { importView } from '@keystonejs/build-field-types';
+import { importView } from '@k5js/build-field-types';
 import { Checkbox, MongoCheckboxInterface, KnexCheckboxInterface } from './Implementation';
 
 export default {

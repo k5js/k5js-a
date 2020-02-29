@@ -3,9 +3,9 @@ import { jsx } from '@emotion/core';
 import styled from '@emotion/styled';
 import { forwardRef } from 'react';
 
-import { XIcon } from '@arch-ui/icons';
-import { colors } from '@arch-ui/theme';
-import { uniformHeight } from '@arch-ui/common';
+import { XIcon } from '@k5ui/icons';
+import { colors } from '@k5ui/theme';
+import { uniformHeight } from '@k5ui/common';
 
 const boldBackgroundColor = {
   default: { default: colors.N60, hover: colors.N50, active: colors.N70 },

@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core';
 
 import { Button } from '../../components';
-import { colors } from '@arch-ui/theme';
+import { colors } from '@k5ui/theme';
 import { media, mediaMax, mq } from '../../utils/media';
 
 const HomepageContent = () => (

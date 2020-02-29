@@ -1,6 +1,6 @@
 const express = require('express');
-const { restrictAudienceMiddleware } = require('@keystonejs/session');
-const { GraphQLPlaygroundApp } = require('@keystonejs/app-graphql-playground');
+const { restrictAudienceMiddleware } = require('@k5js/session');
+const { GraphQLPlaygroundApp } = require('@k5js/app-graphql-playground');
 const { createApolloServer } = require('./lib/apolloServer');
 const validation = require('./validation');
 

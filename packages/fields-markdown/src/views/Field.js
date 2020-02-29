@@ -3,10 +3,10 @@
 import { forwardRef, useState, useMemo } from 'react';
 import { jsx } from '@emotion/core';
 import { styles } from './styles';
-import { A11yText } from '@arch-ui/typography';
-import Tooltip from '@arch-ui/tooltip';
-import { gridSize, colors, borderRadius } from '@arch-ui/theme';
-import { FieldContainer, FieldLabel } from '@arch-ui/fields';
+import { A11yText } from '@k5ui/typography';
+import Tooltip from '@k5ui/tooltip';
+import { gridSize, colors, borderRadius } from '@k5ui/theme';
+import { FieldContainer, FieldLabel } from '@k5ui/fields';
 import 'codemirror';
 import 'codemirror/mode/markdown/markdown';
 import 'codemirror/mode/gfm/gfm';

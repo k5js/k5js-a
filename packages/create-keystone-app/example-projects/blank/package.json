@@ -1,8 +1,8 @@
 {
-  "name": "@keystonejs/example-projects-blank",
+  "name": "@k5js/example-projects-blank",
   "description": "A blank KeystoneJS starter project.",
   "private": true,
-  "version": "5.0.0",
+  "version": "0.0.0",
   "author": "The KeystoneJS Development Team",
   "repository": "https://github.com/keystonejs/keystone.git",
   "homepage": "https://github.com/keystonejs/keystone",
@@ -16,10 +16,10 @@
     "start": "cross-env NODE_ENV=production keystone start"
   },
   "dependencies": {
-    "@keystonejs/adapter-mongoose": "^5.0.0",
-    "@keystonejs/app-admin-ui": "^5.0.0",
-    "@keystonejs/app-graphql": "^5.0.0",
-    "@keystonejs/keystone": "^5.0.0",
+    "@k5js/adapter-mongoose": "^0.0.0",
+    "@k5js/app-admin-ui": "^0.0.0",
+    "@k5js/app-graphql": "^0.0.0",
+    "@k5js/keystone": "^0.0.0",
     "cross-env": "^7.0.0"
   }
 }

@@ -1,8 +1,8 @@
 {
-  "name": "@keystonejs/website",
+  "name": "@k5js/website",
   "description": "KeystoneJS documentation. Powered by Gatsby.",
   "private": true,
-  "version": "5.1.1",
+  "version": "0.0.0",
   "author": "The KeystoneJS Development Team",
   "repository": "https://github.com/keystonejs/keystone.git",
   "homepage": "https://github.com/keystonejs/keystone",
@@ -16,13 +16,13 @@
     "build": "gatsby build"
   },
   "dependencies": {
-    "@arch-ui/icons": "^0.0.9",
-    "@arch-ui/input": "^0.1.5",
-    "@arch-ui/select": "^0.1.4",
-    "@arch-ui/theme": "^0.0.8",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "@emotion/weak-memoize": "^0.2.5",
+    "@k5ui/icons": "^0.0.0",
+    "@k5ui/input": "^0.0.0",
+    "@k5ui/select": "^0.0.0",
+    "@k5ui/theme": "^0.0.0",
     "@mapbox/rehype-prism": "^0.3.1",
     "@mdx-js/mdx": "^1.0.20",
     "@mdx-js/react": "^1.0.20",

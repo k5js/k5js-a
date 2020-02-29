@@ -3,8 +3,8 @@ import memoize from 'memoize-one';
 import { PseudoState } from 'react-pseudo-state';
 import styled from '@emotion/styled';
 
-import { colors } from '@arch-ui/theme';
-import { HiddenInput } from '@arch-ui/input';
+import { colors } from '@k5ui/theme';
+import { HiddenInput } from '@k5ui/input';
 
 const Wrapper = styled.div({
   display: 'flex',

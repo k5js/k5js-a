@@ -5,10 +5,10 @@ import styled from '@emotion/styled';
 
 import copyToClipboard from 'clipboard-copy';
 
-import * as icons from '@arch-ui/icons';
-import { Grid, Cell } from '@arch-ui/layout';
-import { colors } from '@arch-ui/theme';
-import { Kbd } from '@arch-ui/typography';
+import * as icons from '@k5ui/icons';
+import { Grid, Cell } from '@k5ui/layout';
+import { colors } from '@k5ui/theme';
+import { Kbd } from '@k5ui/typography';
 
 const Instructions = styled('div')`
   color: ${colors.N60};
@@ -88,7 +88,7 @@ export default class IconsGuide extends Component {
         )}
         <Grid gap={16}>
           {Object.keys(icons).map(name => {
-            const importText = altIsDown ? `import { ${name} } from '@arch-ui/icons';` : name;
+            const importText = altIsDown ? `import { ${name} } from '@k5ui/icons';` : name;
             const isCopied = copyText === importText;
             const Icon = isCopied ? icons.CheckIcon : icons[name];
             return (

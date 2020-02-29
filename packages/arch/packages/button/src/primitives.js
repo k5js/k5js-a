@@ -4,8 +4,8 @@ import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import { withPseudoState } from 'react-pseudo-state';
 
-import { gridSize } from '@arch-ui/theme';
-import { uniformHeight } from '@arch-ui/common';
+import { gridSize } from '@k5ui/theme';
+import { uniformHeight } from '@k5ui/common';
 import {
   makeSubtleVariant,
   makeNuanceVariant,

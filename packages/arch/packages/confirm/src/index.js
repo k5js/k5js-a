@@ -6,9 +6,9 @@ import ScrollLock from 'react-scrolllock';
 import { jsx } from '@emotion/core';
 import styled from '@emotion/styled';
 
-import { borderRadius, shadows } from '@arch-ui/theme';
+import { borderRadius, shadows } from '@k5ui/theme';
 import FocusTrap from 'focus-trap-react';
-import { fade, zoomInDown, withTransitionState, Blanket } from '@arch-ui/modal-utils';
+import { fade, zoomInDown, withTransitionState, Blanket } from '@k5ui/modal-utils';
 
 const innerGutter = 15;
 

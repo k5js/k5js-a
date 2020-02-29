@@ -2,9 +2,9 @@
 
 import { jsx } from '@emotion/core';
 import { Component, useEffect, useState } from 'react';
-import { ChevronLeftIcon, ChevronRightIcon, ListOrderedIcon } from '@arch-ui/icons';
-import { FlexGroup } from '@arch-ui/layout';
-import { LoadingSpinner } from '@arch-ui/loading';
+import { ChevronLeftIcon, ChevronRightIcon, ListOrderedIcon } from '@k5ui/icons';
+import { FlexGroup } from '@k5ui/layout';
+import { LoadingSpinner } from '@k5ui/loading';
 
 import Page from './Page';
 

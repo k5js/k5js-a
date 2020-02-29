@@ -2,9 +2,9 @@
 
 import React, { useEffect, useRef, useState } from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from '@emotion/core';
-import { gridSize } from '@arch-ui/theme';
+import { gridSize } from '@k5ui/theme';
 import throttle from 'lodash.throttle';
-import { colors } from '@arch-ui/theme';
+import { colors } from '@k5ui/theme';
 
 import { Footer, SidebarNav, Search, SocialIconsNav } from '../components';
 import { media, mediaMax } from '../utils/media';

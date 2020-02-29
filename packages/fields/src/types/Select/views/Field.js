@@ -2,8 +2,8 @@
 
 import { jsx } from '@emotion/core';
 
-import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@arch-ui/fields';
-import Select from '@arch-ui/select';
+import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@k5ui/fields';
+import Select from '@k5ui/select';
 
 const SelectField = ({ onChange, autoFocus, field, value: serverValue, renderContext, errors }) => {
   const handleChange = option => {

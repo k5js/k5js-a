@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 
-import { AlertIcon, DashboardIcon, PencilIcon, PlusIcon, MegaphoneIcon } from '@arch-ui/icons';
-import { Button, IconButton, LoadingButton } from '@arch-ui/button';
-import { FlexGroup } from '@arch-ui/layout';
+import { AlertIcon, DashboardIcon, PencilIcon, PlusIcon, MegaphoneIcon } from '@k5ui/icons';
+import { Button, IconButton, LoadingButton } from '@k5ui/button';
+import { FlexGroup } from '@k5ui/layout';
 
 export default class ButtonGuide extends Component {
   state = { loading: '' };

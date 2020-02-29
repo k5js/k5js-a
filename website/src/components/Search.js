@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import debounce from 'lodash.debounce';
 import { jsx } from '@emotion/core';
-import Select from '@arch-ui/select';
+import Select from '@k5ui/select';
 import { navigate } from 'gatsby';
 
 import { getResults } from '../utils/search';

@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const cuid = require('cuid');
-const { multiAdapterRunners, setupServer, graphqlRequest } = require('@keystonejs/test-utils');
-const { Text } = require('@keystonejs/fields');
+const { multiAdapterRunners, setupServer, graphqlRequest } = require('@k5js/test-utils');
+const { Text } = require('@k5js/fields');
 
 describe('Test isRequired flag for all field types', () => {
   const typesLoc = path.resolve('packages/fields/src/types');

@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core';
 import { useState } from 'react';
 import chrono from 'chrono-node';
-import { Input } from '@arch-ui/input';
+import { Input } from '@k5ui/input';
 import { format } from 'date-fns';
 
 export const TextDayPicker = ({
