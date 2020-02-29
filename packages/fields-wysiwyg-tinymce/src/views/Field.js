@@ -3,7 +3,7 @@
 import { jsx } from '@emotion/core';
 import { Component } from 'react';
 
-import { FieldContainer, FieldLabel } from '@arch-ui/fields';
+import { FieldContainer, FieldLabel } from '@k5ui/fields';
 
 import Editor from './Editor';
 

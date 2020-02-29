@@ -1,16 +1,17 @@
 <!--[meta]
-section: field-types
-title: MongoId
+section: api
+subSection: field-types
+title: MongoID
 [meta]-->
 
-# Keystone 5 `MongoId` Field Type
+# MongoID
 
-This field allows arbitary MongoID fields to be added to your lists.
+This field allows arbitrary MongoID fields to be added to your lists.
 
 It supports the core Mongoose and Knex adapters:
 
 - On Mongoose the [native Mongo `ObjectId` schema type](https://mongoosejs.com/docs/schematypes.html#objectids) is used.
-- On Knex a 24 charactor [string field](https://knexjs.org/#Schema-string) is added to the schema.
+- On Knex a 24 character [string field](https://knexjs.org/#Schema-string) is added to the schema.
   This resolves down to `varchar(24)`, `character varying(24)` or similar, depending on the underlying DB platform.
   Values stored are forced to lowercase on read and write to avoid issues with case-sensitive string comparisons.
   See the [casing section](#casing) for details.
@@ -18,8 +19,8 @@ It supports the core Mongoose and Knex adapters:
 ## Usage
 
 ```js
-const { Keystone } = require('@keystone-alpha/keystone');
-const { MongoId } = require('@keystone-alpha/fields-mongoid');
+const { Keystone } = require('@keystonejs/keystone');
+const { MongoId } = require('@keystonejs/fields-mongoid');
 
 const keystone = new Keystone(/* ... */);
 
@@ -83,7 +84,7 @@ Mongoose automatically and transparently converts to and from the 24 char hexade
 
 ### Knex Adaptor
 
-The Knex adaptor adds 24 charactor [string field](https://knexjs.org/#Schema-string) to the schema.
+The Knex adaptor adds 24 character [string field](https://knexjs.org/#Schema-string) to the schema.
 This resolves down to `varchar(24)`, `character varying(24)` or similar, depending on the underlying DB platform.
 
 Values stored are forced to lowercase on read and write to avoid issues with case-sensitive string comparisons.
@@ -95,7 +96,7 @@ The field adapter supplied for Knex supports
 ## Casing
 
 Mongo ObjectIDs are usually passed around in a hexadecimal string representation.
-Hexadecial itself is case agnostic; the hex value `AF3D` is identical to the hex value `af3d`
+Hexadecimal itself is case agnostic; the hex value `AF3D` is identical to the hex value `af3d`
 (they encode the same value as decimal `44861` or binary `1010111100111101`).
 However, JavaScript and (depending on your configuration) some DB platforms are case-sensitive;
 in these contexts, the string `'AF3D'` _does not equal_ the string `'af3d'`.

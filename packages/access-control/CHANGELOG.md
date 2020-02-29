@@ -1,4 +1,98 @@
+# @keystonejs/access-control
+
+## 5.1.0
+
+### Minor Changes
+
+- [`517b23e4`](https://github.com/keystonejs/keystone/commit/517b23e4b17414ed1807e8d7af1e67377ba3b7bf) [#2391](https://github.com/keystonejs/keystone/pull/2391) Thanks [@timleslie](https://github.com/timleslie)! - Removed support for Node 8.x, as it is [no longer in maintenance mode](https://nodejs.org/en/about/releases/).
+
+### Patch Changes
+
+- Updated dependencies [[`517b23e4`](https://github.com/keystonejs/keystone/commit/517b23e4b17414ed1807e8d7af1e67377ba3b7bf)]:
+  - @keystonejs/utils@5.2.0
+
+## 5.0.0
+
+### Major Changes
+
+- [`7b4ed362`](https://github.com/keystonejs/keystone-5/commit/7b4ed3623f5774d7783c39962bfa1ce97938e310) [#1821](https://github.com/keystonejs/keystone-5/pull/1821) Thanks [@jesstelford](https://github.com/jesstelford)! - Release @keystonejs/\* packages (つ＾ ◡ ＾)つ
+
+  - This is the first release of `@keystonejs/*` packages (previously `@keystone-alpha/*`).
+  - All packages in the `@keystone-alpha` namespace are now available in the `@keystonejs` namespace, starting at version `5.0.0`.
+  - To upgrade your project you must update any `@keystone-alpha/*` dependencies in `package.json` to point to `"@keystonejs/*": "^5.0.0"` and update any `require`/`import` statements in your code.
+
+### Patch Changes
+
+- Updated dependencies [[`7b4ed362`](https://github.com/keystonejs/keystone-5/commit/7b4ed3623f5774d7783c39962bfa1ce97938e310)]:
+  - @keystonejs/utils@5.0.0
+
 # @keystone-alpha/access-control
+
+## 3.1.0
+
+### Minor Changes
+
+- [1405eb07](https://github.com/keystonejs/keystone-5/commit/1405eb07): Add `listKey`, `fieldKey` (fields only), `operation`, `gqlName`, `itemId` and `itemIds` as arguments to imperative access control functions.
+
+## 3.0.0
+
+### Major Changes
+
+- [9ade2b2d](https://github.com/keystonejs/keystone-5/commit/9ade2b2d): Add support for `access: { auth: ... }` which controls whether authentication queries and mutations are accessible on a List
+
+  If you have a `List` which is being used as the target of an Authentication Strategy, you should set `access: { auth: true }` on that list.
+
+### Minor Changes
+
+- [b61289b4](https://github.com/keystonejs/keystone-5/commit/b61289b4): Add `parseCustomAccess()` for parsing the access control directives on custom types/queries/mutations.
+- [0bba9f07](https://github.com/keystonejs/keystone-5/commit/0bba9f07): Add `validateCustomAccessControl()` for use by custom queries/mutations access control checking.
+
+### Patch Changes
+
+- [9ece715c](https://github.com/keystonejs/keystone-5/commit/9ece715c): Refactor access-control internals to better support future changes
+
+## 2.0.0
+
+### Major Changes
+
+- [bc0b9813](https://github.com/keystonejs/keystone-5/commit/bc0b9813): `parseListAccess` and `parseFieldAccess` now take `schemaNames` as an argument, and return a nested access object, with the `schemaNames` as keys.
+
+  For example,
+
+  ```js
+  parseListAccess({ defaultAccess: false, access: { public: true }, schemaNames: ['public', 'internal'] }
+  ```
+
+  will return
+
+  ```js
+  {
+    public: { create: true, read: true, update: true, delete: true },
+    internal: { create: false, read: false, update: false, delete: false },
+  }
+  ```
+
+  These changes are backwards compatible with regard to the `access` argument, so
+
+  ```js
+  const access = { create: true, read: true, update: true, delete: true };
+  parseListAccess({ access, schemaNames: ['public', 'internal'] }
+  ```
+
+  will return
+
+  ```js
+  {
+    public: { create: true, read: true, update: true, delete: true },
+    internal: { create: true, read: true, update: true, delete: true },
+  }
+  ```
+
+## 1.1.0
+
+### Minor Changes
+
+- [e5d4ee76](https://github.com/keystonejs/keystone-5/commit/e5d4ee76): Expose 'originalInput' to access control functions for lists & fields
 
 ## 1.0.5
 

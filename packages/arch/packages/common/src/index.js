@@ -1,5 +1,4 @@
-// @flow
-import { borderRadius, gridSize } from '@arch-ui/theme';
+import { borderRadius, gridSize } from '@k5ui/theme';
 
 export const uniformHeight = {
   appearance: 'none',

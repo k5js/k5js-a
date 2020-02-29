@@ -38,12 +38,11 @@ describe('Add Middleware', () => {
       adminPath,
     });
 
-    //expect(adminUI.createSessionMiddleware()).not.toBe(null);
+    const adminMeta = adminUI.getAdminUIMeta(keystone);
+
     expect(
       adminUI.createDevMiddleware({
-        keystone,
-        apiPath: adminPath,
-        graphiqlPath: `${adminPath}/graphiql`,
+        adminMeta,
       })
     ).not.toBe(null);
   });

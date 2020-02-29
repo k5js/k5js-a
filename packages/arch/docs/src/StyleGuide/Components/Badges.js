@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
-import { Badge } from '@arch-ui/badge';
-import { FlexGroup } from '@arch-ui/layout';
+import { Badge } from '@k5ui/badge';
+import { FlexGroup } from '@k5ui/layout';
 
 const appearances = ['default', 'primary', 'created', 'warning', 'danger', 'inverted'];
 const BadgeGuide = () => (

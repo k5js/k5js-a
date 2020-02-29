@@ -1,16 +1,20 @@
 import { DateTime } from 'luxon';
-import { Implementation } from '@keystone-alpha/fields';
-import { KnexFieldAdapter } from '@keystone-alpha/adapter-knex';
-import { MongooseFieldAdapter } from '@keystone-alpha/adapter-mongoose';
+import { Implementation } from '@k5js/fields';
+import { KnexFieldAdapter } from '@k5js/adapter-knex';
+import { MongooseFieldAdapter } from '@k5js/adapter-mongoose';
 
 export class DateTimeUtcImplementation extends Implementation {
-  get gqlOutputFields() {
+  constructor() {
+    super(...arguments);
+    this.isOrderable = true;
+  }
+  gqlOutputFields() {
     return [`${this.path}: String`];
   }
-  get gqlOutputFieldResolvers() {
+  gqlOutputFieldResolvers() {
     return { [`${this.path}`]: item => item[this.path] && item[this.path].toISOString() };
   }
-  get gqlQueryInputFields() {
+  gqlQueryInputFields() {
     return [
       ...this.equalityInputFields('String'),
       ...this.orderingInputFields('String'),

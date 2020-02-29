@@ -37,42 +37,14 @@ export type SearchType = {
 
 const allowedSearchParams = ['currentPage', 'pageSize', 'search', 'fields', 'sortBy', 'filters'];
 
-const parseFields = (fields, list) => {
-  const fieldPaths = fields.split(',');
-  return fieldPaths
-    .map(path => (path === '_label_' ? pseudoLabelField : list.fields.find(f => f.path === path)))
-    .filter(f => !!f); // remove anything that was not found.
-};
-
-const encodeFields = fields => {
-  return fields.map(f => f.path).join(',');
-};
-
-const parseSortBy = (sortBy: string, list: List): SortByType | null => {
-  let key = sortBy;
-  let direction: DirectionType = 'ASC';
-
-  if (sortBy.charAt(0) === '-') {
-    key = sortBy.substr(1);
-    direction = 'DESC';
-  }
-
-  const field = list.fields.find(f => f.path === key);
-  if (!field) {
-    return null;
-  }
-  return {
-    field: { label: field.label, path: field.path },
-    direction,
-  };
-};
-
 const getSearchDefaults = (props: Props): SearchType => {
   const { defaultColumns, defaultSort, defaultPageSize } = props.list.adminConfig;
 
   // Dynamic defaults
   const fields = parseFields(defaultColumns, props.list);
-  const sortBy = parseSortBy(defaultSort, props.list) || { field: fields[0], direction: 'ASC' };
+  const sortBy =
+    parseSortBy(defaultSort, props.list) ||
+    (fields[0] ? { field: fields[0], direction: 'ASC' } : null);
   fields.unshift(pseudoLabelField);
   return {
     currentPage: 1,
@@ -84,7 +56,40 @@ const getSearchDefaults = (props: Props): SearchType => {
   };
 };
 
+const parseFields = (fields, list) => {
+  const fieldPaths = fields.split(',');
+  return fieldPaths
+    .map(path => (path === '_label_' ? pseudoLabelField : list.fields.find(f => f.path === path)))
+    .filter(f => !!f); // remove anything that was not found.
+};
+
+const encodeFields = fields => {
+  return fields.map(f => f.path).join(',');
+};
+
+const parseSortBy = (sortBy, list) => {
+  if (!sortBy) return null;
+
+  let key = sortBy;
+  let direction: DirectionType = 'ASC';
+
+  if (sortBy.charAt(0) === '-') {
+    key = sortBy.substr(1);
+    direction = 'DESC';
+  }
+
+  const field = list.fields.filter(field => field.config.isOrderable).find(f => f.path === key);
+  if (!field) {
+    return null;
+  }
+  return {
+    field: { label: field.label, path: field.path },
+    direction,
+  };
+};
+
 const encodeSortBy = (sortBy: SortByType): string => {
+  if (!sortBy) return '';
   const {
     direction,
     field: { path },
@@ -92,7 +97,7 @@ const encodeSortBy = (sortBy: SortByType): string => {
   return direction === 'ASC' ? path : `-${path}`;
 };
 
-const parseFilter = (filter: [string, string], list): FilterType | null => {
+const parseFilter = (filter, list) => {
   const [key, value] = filter;
   let type;
   let label;
@@ -130,7 +135,7 @@ const parseFilter = (filter: [string, string], list): FilterType | null => {
   };
 };
 
-const encodeFilter = (filter: FilterType): [string, string] => {
+const encodeFilter = filter => {
   const { field, type, value } = filter;
   return [`${field.path}_${type}`, JSON.stringify(value)];
 };
@@ -198,7 +203,7 @@ export const decodeSearch = (search: string, props: Props): SearchType => {
   };
 };
 
-export const encodeSearch = (data: SearchType, props: Props): string => {
+export const encodeSearch = (data, props) => {
   const searchDefaults = getSearchDefaults(props);
   const params = Object.keys(data).reduce((acc, key) => {
     // strip anthing which matches the default (matching primitive types)

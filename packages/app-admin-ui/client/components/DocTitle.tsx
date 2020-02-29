@@ -1,21 +1,18 @@
-import React, { Children } from 'react';
-
-import DocumentTitle from 'react-document-title';
-
-import { withAdminMeta } from '../providers/AdminMeta';
+import { useEffect } from 'react';
+import { useAdminMeta } from '../providers/AdminMeta';
 
 type Props = {
-  adminMeta: {
-    name: string;
-  };
-  children: Node;
+  title: string;
 };
 
-const DocTitle = ({ adminMeta, children }: Props) => {
-  const text = Children.toArray(children).join('');
-  const title = `${text} - ${adminMeta.name}`;
+const DocTitle = ({ title }: Props) => {
+  const { name } = useAdminMeta();
 
-  return <DocumentTitle title={title} />;
+  useEffect(() => {
+    document.title = `${title} — ${name}`;
+  }, [title]);
+
+  return null;
 };
 
-export default withAdminMeta(DocTitle);
+export default DocTitle;

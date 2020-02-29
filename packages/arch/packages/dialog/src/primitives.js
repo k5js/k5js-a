@@ -1,12 +1,10 @@
-// @flow
-
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { type ElementType, forwardRef } from 'react';
+import { forwardRef } from 'react';
 import styled from '@emotion/styled';
 
-import { colors } from '@arch-ui/theme';
-import { alpha } from '@arch-ui/color-utils';
+import { colors } from '@k5ui/theme';
+import { alpha } from '@k5ui/color-utils';
 
 const outerGutter = 40;
 const innerGutter = 20;
@@ -25,10 +23,7 @@ export const Positioner = styled.div(({ width }) => ({
   zIndex: 2,
 }));
 
-type DialogElementProps = {
-  component: ElementType,
-};
-export const Dialog = forwardRef<DialogElementProps, any>(({ component: Tag, ...props }, ref) => (
+export const Dialog = forwardRef(({ component: Tag, ...props }, ref) => (
   <Tag
     ref={ref}
     role="dialog"

@@ -1,22 +1,22 @@
 {
-  "name": "@arch-ui/filters",
-  "description": "Filter UI as used in @keystone-alpha Admin UI.",
-  "version": "0.0.10",
+  "name": "@k5ui/filters",
+  "description": "Filter UI as used in @keystonejs Admin UI.",
+  "version": "0.0.0",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/filters.cjs.js",
   "peerDependencies": {
-    "react": "^16.8.6"
+    "react": "^16.12.0"
   },
   "devDependencies": {
-    "react": "^16.8.6"
+    "react": "^16.12.0"
   },
   "dependencies": {
-    "@arch-ui/controls": "^0.0.9",
-    "@arch-ui/layout": "^0.2.4",
-    "@arch-ui/theme": "^0.0.5",
-    "@babel/runtime": "^7.4.3",
-    "@emotion/core": "^10.0.14",
+    "@babel/runtime": "^7.8.4",
+    "@emotion/core": "^10.0.27",
+    "@k5ui/controls": "^0.0.0",
+    "@k5ui/layout": "^0.0.0",
+    "@k5ui/theme": "^0.0.0",
     "react-radios": "^1.1.0"
   },
   "module": "dist/filters.esm.js"

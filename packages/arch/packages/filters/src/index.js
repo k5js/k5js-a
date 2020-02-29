@@ -1,4 +1,3 @@
-// @flow
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { Children } from 'react';
@@ -9,9 +8,9 @@ import {
   Radio as _Radio,
 } from 'react-radios';
 
-import { colors } from '@arch-ui/theme';
-import { CheckboxPrimitive, RadioPrimitive } from '@arch-ui/controls';
-import { FlexGroup } from '@arch-ui/layout';
+import { colors } from '@k5ui/theme';
+import { CheckboxPrimitive, RadioPrimitive } from '@k5ui/controls';
+import { FlexGroup } from '@k5ui/layout';
 
 const ControlLabel = ({ isChecked, isDisabled, ...props }) => {
   const type = Children.toArray(props.children)[0].props.type;
@@ -45,13 +44,13 @@ const ControlLabel = ({ isChecked, isDisabled, ...props }) => {
 const StretchGroup = props => <FlexGroup stretch {...props} />;
 
 // checkbox
-export const CheckboxGroup = (props: *) => <_CheckboxGroup component={StretchGroup} {...props} />;
+export const CheckboxGroup = props => <_CheckboxGroup component={StretchGroup} {...props} />;
 const ButtonCheckbox = props => (
   <CheckboxPrimitive components={{ Label: ControlLabel }} {...props} />
 );
-export const Checkbox = (props: *) => <_Checkbox component={ButtonCheckbox} {...props} />;
+export const Checkbox = props => <_Checkbox component={ButtonCheckbox} {...props} />;
 
 // radio
-export const RadioGroup = (props: *) => <_RadioGroup component={StretchGroup} {...props} />;
+export const RadioGroup = props => <_RadioGroup component={StretchGroup} {...props} />;
 const ButtonRadio = props => <RadioPrimitive components={{ Label: ControlLabel }} {...props} />;
-export const Radio = (props: *) => <_Radio component={ButtonRadio} {...props} />;
+export const Radio = props => <_Radio component={ButtonRadio} {...props} />;

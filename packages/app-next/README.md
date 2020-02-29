@@ -1,10 +1,33 @@
 <!--[meta]
-section: packages
-title: KeystoneJS Next.js App
+section: api
+subSection: apps
+title: Next.js App
 [meta]-->
 
-# KeystoneJS Next.js App
+# Next.js App
 
-```DOCS_TODO
-TODO
+A KeystoneJS App for serving a [Next.js](https://nextjs.org/) application.
+
+## Usage
+
+```javascript
+const { NextApp } = require('@keystonejs/app-next');
+
+...
+
+module.exports = {
+  keystone,
+  apps: [
+    new GraphQLApp(),
+    new AdminUIApp({ enableDefaultRoute: false }),
+    new NextApp({ dir: 'app' }),
+  ],
+  distDir,
+};
 ```
+
+### Config
+
+| Option | Type     | Default | Required | Description                       |
+| ------ | -------- | ------- | -------- | --------------------------------- |
+| `dir`  | `String` | `null`  | `true`   | The directory of the Next.js app. |

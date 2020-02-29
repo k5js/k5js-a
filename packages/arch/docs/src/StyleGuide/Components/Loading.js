@@ -3,9 +3,9 @@ import { jsx } from '@emotion/core';
 import { Component, Fragment } from 'react';
 import styled from '@emotion/styled';
 
-import { colors } from '@arch-ui/theme';
-import { FlexGroup } from '@arch-ui/layout';
-import { LoadingIndicator, LoadingSpinner } from '@arch-ui/loading';
+import { colors } from '@k5ui/theme';
+import { FlexGroup } from '@k5ui/layout';
+import { LoadingIndicator, LoadingSpinner } from '@k5ui/loading';
 
 const LoadingBox = styled.div(({ on, size }) => ({
   alignItems: 'center',
@@ -18,12 +18,8 @@ const LoadingBox = styled.div(({ on, size }) => ({
 }));
 
 const appearances = ['default', 'dark', 'primary', 'inverted'];
-type State = {
-  size: number,
-  appearance: 'default' | 'dark' | 'primary' | 'inverted',
-};
 
-export default class ProgressGuide extends Component<*, State> {
+export default class ProgressGuide extends Component {
   state = { appearance: 'default', size: 8 };
   handleAppearance = ({ target: { value } }) => {
     this.setState({ appearance: value });

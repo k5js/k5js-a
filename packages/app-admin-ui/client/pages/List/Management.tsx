@@ -3,10 +3,10 @@
 import React, { Fragment, useState } from 'react';
 import styled from '@emotion/styled';
 
-import { SettingsIcon, TrashcanIcon } from '@arch-ui/icons';
-import { FlexGroup } from '@arch-ui/layout';
-import { IconButton } from '@arch-ui/button';
-import { colors, gridSize } from '@arch-ui/theme';
+import { SettingsIcon, TrashcanIcon } from '@k5ui/icons';
+import { FlexGroup } from '@k5ui/layout';
+import { IconButton } from '@k5ui/button';
+import { colors, gridSize } from '@k5ui/theme';
 
 import UpdateManyItemsModal from '../../components/UpdateManyItemsModal';
 import DeleteManyItemsModal from '../../components/DeleteManyItemsModal';

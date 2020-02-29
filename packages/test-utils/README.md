@@ -1,16 +1,17 @@
 <!--[meta]
-section: packages
+section: api
+subSection: utilities
 title: Test Utils
 [meta]-->
 
 # Test Utils
 
-This package is an internal Keystone package which contains utility functions to assist in running tests against the GraphQL API.
+This package is an internal KeystoneJS package which contains utility functions to assist in running tests against the GraphQL API.
 
 ## Installation
 
 ```bash
-yarn add @keystone-alpha/test-utils
+yarn add @keystonejs/test-utils
 ```
 
 ## Usage

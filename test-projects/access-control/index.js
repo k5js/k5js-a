@@ -1,8 +1,9 @@
-const { Keystone, PasswordAuthStrategy } = require('@keystone-alpha/keystone');
-const { Text, Password, Select } = require('@keystone-alpha/fields');
-const { GraphQLApp } = require('@keystone-alpha/app-graphql');
-const { AdminUIApp } = require('@keystone-alpha/app-admin-ui');
-const { objMerge } = require('@keystone-alpha/utils');
+const { Keystone } = require('@k5js/keystone');
+const { PasswordAuthStrategy } = require('@k5js/auth-password');
+const { Text, Password, Select } = require('@k5js/fields');
+const { GraphQLApp } = require('@k5js/app-graphql');
+const { AdminUIApp } = require('@k5js/app-admin-ui');
+const { objMerge } = require('@k5js/utils');
 const {
   getStaticListName,
   getImperativeListName,
@@ -14,7 +15,7 @@ const {
 
 const { projectName } = require('./config');
 
-const { MongooseAdapter } = require('@keystone-alpha/adapter-mongoose');
+const { MongooseAdapter } = require('@k5js/adapter-mongoose');
 
 const keystone = new Keystone({
   name: projectName,
@@ -91,6 +92,7 @@ function createListWithImperativeAccess(access) {
       read: () => access.read,
       update: () => access.update,
       delete: () => access.delete,
+      auth: () => access.auth,
     },
   });
 }
@@ -131,6 +133,7 @@ function createListWithDeclarativeAccess(access) {
         }
         return false;
       },
+      auth: true,
     },
   });
 }

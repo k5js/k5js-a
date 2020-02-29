@@ -49,7 +49,7 @@ export default class Animation extends Component<Props, State> {
     tag: 'div',
     timing: 'ease',
   };
-  static getDerivedStateFromProps(props: Props, state: State) {
+  static getDerivedStateFromProps(props, state) {
     if (!state.hasAnimation && props.name !== state.name) {
       return { hasAnimation: true, name: props.name };
     }

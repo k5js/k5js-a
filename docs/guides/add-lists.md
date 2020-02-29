@@ -1,11 +1,13 @@
 <!--[meta]
 section: guides
 title: Adding Lists To Your Keystone Project
+subSection: setup
+order: 2
 [meta]-->
 
 # Adding Lists To Your Keystone Project
 
-We've already created one list during [previous tutorial](./new-project.md).
+We've already created one list during [previous tutorial](/docs/guides/new-project.md).
 Now it's the time to dive deeper. Let's make ToDos object a bit more complex.
 
 ## Creating basic list in separate file
@@ -14,7 +16,7 @@ To improve maintainability of your code it is convenient to split List schemas t
 named 'lists', with a file `Todos.js` inside of it and put the following code inside.
 
 ```javascript
-const { Text, Checkbox } = require('@keystone-alpha/fields');
+const { Text, Checkbox } = require('@keystonejs/fields');
 
 module.exports = {
   fields: {
@@ -36,18 +38,18 @@ Inside of `index.js` import the defined schema and replace the existing one with
 ```javascript
 const TodosSchema = require('./lists/Todos.js');
 
-keystone.createList('Todos, TodosSchema');
+keystone.createList('Todo', TodosSchema);
 ```
 
 Make sure to relaunch keystone's instance and check, that everything still works fine.
 
 ## Adding fields
 
-Tasks usually have a few more fields, let's add an ability to set deadlines and assignee of a task:
+Tasks usually have a few more fields. Let's add an ability to set deadlines and assignee of a task:
 
 ```javascript
 // import another field type - CalendarDay
-const { Text, CalendarDay } = require('@keystone-alpha/fields');
+const { Text, CalendarDay } = require('@keystonejs/fields');
 
 // define new field
 module.exports = {
@@ -59,17 +61,18 @@ module.exports = {
             yearRangeFrom: '2019',
             yearRangeTo: '2029',
             isRequired: false,
-            defaultValue: Date.now(),
+            defaultValue: new Date().toISOString('YYYY-MM-DD').substring(0, 10),
         },
         assignee: {
-            type: 'Text',
+            type: Text,
             isRequired: true,
         },
     },
 }
 ```
 
-If you're curious about the usage options you can read more about `CalendarDay` [here](../../packages/fields/src/types/CalendarDay/README.md). Now it's a time to explore docs about other field types and get a bit familiar with them, it will help you make your schema cleaner.
+If you're curious about the usage options you can read [more about `CalendarDay`](/packages/fields/src/types/CalendarDay/README.md).
+Now it's time to explore docs on other field types and get a bit familiar with them. It will help you make your schema cleaner.
 
 ## Defining User list
 
@@ -77,7 +80,7 @@ Take a look at the `assignee` field. Now we're just typing in a name. Why don't 
 Create another file `Users.js` in the `lists` directory. It should look like this:
 
 ```javascript
-const { Text, Password } = require('@keystone-alpha/fields');
+const { Text, Password } = require('@keystonejs/fields');
 
 module.exports = {
   fields: {
@@ -101,8 +104,9 @@ const UsersSchema = require('./lists/Users.js');
 keystone.createList('User', UsersSchema);
 ```
 
-Realunch your app and check if new list appeared in admin panel. Note, now `type: Password` looks when you're creating new user. But how can we assign a task to specific user? Let's proceed with [Defining Relationships](./relationships.md)
+Relaunch your app and check if new list appeared in admin panel. Note, now `type: Password` looks when you're creating new user.
+But how can we assign a task to specific user? Let's proceed with [Defining Relationships](/docs/guides/relationships.md)
 
 See also:
-[Schema - Lists & Fields](../discussions/schema.md)
-[API - createList](../api/create-list.md)
+[Schema - Lists & Fields](/docs/guides/schema.md)
+[API - createList](/docs/api/create-list.md)

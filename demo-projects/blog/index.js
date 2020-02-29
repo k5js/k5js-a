@@ -1,10 +1,11 @@
 //imports for Keystone app core
-const { Keystone, PasswordAuthStrategy } = require('@keystone-alpha/keystone');
-const { MongooseAdapter } = require('@keystone-alpha/adapter-mongoose');
-const { GraphQLApp } = require('@keystone-alpha/app-graphql');
-const { AdminUIApp } = require('@keystone-alpha/app-admin-ui');
-const { NextApp } = require('@keystone-alpha/app-next');
-const { StaticApp } = require('@keystone-alpha/app-static');
+const { Keystone } = require('@k5js/keystone');
+const { PasswordAuthStrategy } = require('@k5js/auth-password');
+const { MongooseAdapter } = require('@k5js/adapter-mongoose');
+const { GraphQLApp } = require('@k5js/app-graphql');
+const { AdminUIApp } = require('@k5js/app-admin-ui');
+const { NextApp } = require('@k5js/app-next');
+const { StaticApp } = require('@k5js/app-static');
 
 const { staticRoute, staticPath, distDir } = require('./config');
 const { User, Post, PostCategory, Comment } = require('./schema');
@@ -35,31 +36,9 @@ keystone.createList('Comment', Comment);
 
 const adminApp = new AdminUIApp({
   adminPath: '/admin',
+  hooks: require.resolve('./admin/'),
   authStrategy,
-  pages: [
-    {
-      label: 'A new dashboard',
-      path: '',
-      component: require.resolve('./admin/pages/dashboard'),
-    },
-    {
-      label: 'About this project',
-      path: 'about',
-      component: require.resolve('./admin/pages/about'),
-    },
-    {
-      label: 'Blog',
-      children: [
-        { listKey: 'Post' },
-        { label: 'Categories', listKey: 'PostCategory' },
-        { listKey: 'Comment' },
-      ],
-    },
-    {
-      label: 'People',
-      children: ['User'],
-    },
-  ],
+  isAccessAllowed: ({ authentication: { item: user } }) => !!user && !!user.isAdmin,
 });
 
 module.exports = {

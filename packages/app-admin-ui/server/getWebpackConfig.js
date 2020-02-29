@@ -8,6 +8,7 @@ module.exports = function({ adminMeta, entry, outputPath }) {
   const templatePlugin = new HtmlWebpackPlugin({
     title: 'KeystoneJS',
     template: 'index.html',
+    chunksSortMode: 'none',
   });
   const environmentPlugin = new webpack.DefinePlugin({
     ENABLE_DEV_FEATURES: enableDevFeatures,
@@ -18,7 +19,7 @@ module.exports = function({ adminMeta, entry, outputPath }) {
   const rules = [
     {
       test: [/\.jsx?$/, /\.tsx?$/],
-      exclude: [/node_modules(?!(?:\/|\\)@keystone-alpha(?:\/|\\)app-admin-ui)/],
+      exclude: [/node_modules(?!(?:\/|\\)@k5js(?:\/|\\)app-admin-ui)/],
       use: [
         {
           loader: 'babel-loader',
@@ -37,8 +38,12 @@ module.exports = function({ adminMeta, entry, outputPath }) {
       ],
     },
     {
-      test: /\.(png|svg|jpg|gif)$/,
+      test: /\.(woff(2)?|ttf|eot|png|svg|jpg|gif)$/,
       use: ['file-loader'],
+    },
+    {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader'],
     },
     // This is a workaround for a problem with graphql@0.13.x. It can be removed
     // once we upgrade to graphql@14.0.2.
@@ -54,7 +59,7 @@ module.exports = function({ adminMeta, entry, outputPath }) {
       test: /FIELD_TYPES/,
       use: [
         {
-          loader: '@keystone-alpha/field-views-loader',
+          loader: '@k5js/field-views-loader',
           options: {
             adminMeta,
           },

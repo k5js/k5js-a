@@ -1,6 +1,5 @@
-// @flow
 import styled from '@emotion/styled';
-import { colors, borderRadius } from '@arch-ui/theme';
+import { colors, borderRadius } from '@k5ui/theme';
 
 export const WeekRow = styled.div({
   display: 'flex',

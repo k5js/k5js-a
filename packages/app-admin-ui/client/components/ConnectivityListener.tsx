@@ -25,7 +25,7 @@ class ConnectivityListener extends Component<Props, State> {
   offLine = () => {
     this.setState({ isOnline: false });
   };
-  offlineToastId: null | string = null;
+  offlineToastId = null;
 
   onlineCallback = () => {
     if (this.offlineToastId !== null) {

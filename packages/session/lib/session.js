@@ -2,7 +2,13 @@ const cookieSignature = require('cookie-signature');
 const expressSession = require('express-session');
 const cookie = require('cookie');
 
-const commonSessionMiddleware = (keystone, cookieSecret, sessionStore) => {
+const commonSessionMiddleware = ({
+  keystone,
+  cookieSecret,
+  sessionStore,
+  secureCookies,
+  cookieMaxAge,
+}) => {
   const COOKIE_NAME = 'keystone.sid';
 
   // We have at least one auth strategy
@@ -50,6 +56,7 @@ const commonSessionMiddleware = (keystone, cookieSecret, sessionStore) => {
     resave: false,
     saveUninitialized: false,
     name: COOKIE_NAME,
+    cookie: { secure: secureCookies, maxAge: cookieMaxAge },
     store: sessionStore,
   });
 
@@ -66,7 +73,17 @@ function populateAuthedItemMiddleware(keystone) {
       // TODO: probably destroy the session
       return next();
     }
-    const item = await list.adapter.findById(req.session.keystoneItemId);
+    let item;
+    try {
+      item = await list.getAccessControlledItem(req.session.keystoneItemId, true, {
+        operation: 'read',
+        context: {},
+        info: {},
+      });
+    } catch (e) {
+      // If the item no longer exists, getAccessControlledItem() will throw an exception
+      return next();
+    }
     if (!item) {
       // TODO: probably destroy the session
       return next();

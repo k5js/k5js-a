@@ -2,7 +2,7 @@
 
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from '@emotion/core';
-import { colors } from '@arch-ui/theme';
+import { colors } from '@k5ui/theme';
 
 import { Link } from 'gatsby';
 import { H1, H2, H3, H4, H5, H6 } from './Heading';
@@ -38,7 +38,14 @@ const Anchor = ({ href, ...props }) => {
     },
   };
 
-  if (!href || href.indexOf('http') === 0 || href.indexOf('#') === 0) {
+  if (
+    !href ||
+    href.indexOf('http') === 0 ||
+    href.indexOf('#') === 0 ||
+    // we want to use a normal anchor for anything on /static/ because
+    // it will be an image or something like that
+    href.indexOf('/static/') === 0
+  ) {
     return <a href={href} css={styles} {...props} />;
   }
   return <Link to={href} css={styles} {...props} />;

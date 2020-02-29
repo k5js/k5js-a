@@ -2,9 +2,9 @@
 
 import { jsx } from '@emotion/core';
 
-import { Button } from '@arch-ui/button';
-import { InfoIcon } from '@arch-ui/icons';
-import { colors } from '@arch-ui/theme';
+import { Button } from '@k5ui/button';
+import { InfoIcon } from '@k5ui/icons';
+import { colors } from '@k5ui/theme';
 
 import { useListPagination } from '../pages/List/dataHooks';
 
@@ -42,20 +42,21 @@ export const NoResults = ({ currentPage, filters, list, search }) => {
     </NoResultsWrapper>
   );
 
+  if (currentPage !== 1) {
+    return pageDepthMessage;
+  }
+
   if (filters && filters.length) {
-    return currentPage !== 1 ? (
-      pageDepthMessage
-    ) : (
+    return (
       <NoResultsWrapper>
         No {list.plural.toLowerCase()} found matching the{' '}
         {filters.length > 1 ? 'filters' : 'filter'}
       </NoResultsWrapper>
     );
   }
+
   if (search && search.length) {
-    return currentPage !== 1 ? (
-      pageDepthMessage
-    ) : (
+    return (
       <NoResultsWrapper>
         No {list.plural.toLowerCase()} found matching &ldquo;
         {search}

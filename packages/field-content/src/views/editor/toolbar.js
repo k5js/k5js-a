@@ -5,9 +5,9 @@ import { createPortal } from 'react-dom';
 import { Popper } from 'react-popper';
 import { marks, markTypes } from './marks';
 import { ToolbarButton } from './toolbar-components';
-import { CircleSlashIcon } from '@arch-ui/icons';
-import { colors, gridSize } from '@arch-ui/theme';
-import { useMeasure } from '@arch-ui/hooks';
+import { CircleSlashIcon } from '@k5ui/icons';
+import { colors, gridSize } from '@k5ui/theme';
+import { useMeasure } from '@k5ui/hooks';
 import { getSelectionReference } from './utils';
 import applyRef from 'apply-ref';
 
@@ -130,7 +130,17 @@ export default ({ editorState, blocks, editor }) => {
       }
     >
       {({ style, ref, scheduleUpdate }) => (
-        <PopperRender {...{ scheduleUpdate, editorState, style, blocks, editor, ref, children }} />
+        <PopperRender
+          {...{
+            scheduleUpdate,
+            editorState,
+            style: { ...style, zIndex: 10 },
+            blocks,
+            editor,
+            ref,
+            children,
+          }}
+        />
       )}
     </Popper>
   );

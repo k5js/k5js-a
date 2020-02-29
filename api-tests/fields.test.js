@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const cuid = require('cuid');
-const { multiAdapterRunners, setupServer } = require('@keystone-alpha/test-utils');
+const { multiAdapterRunners, setupServer } = require('@k5js/test-utils');
 
 // `mongodb-memory-server` downloads a binary on first run in CI, which can take
 // a while, so we bump up the timeout here.
@@ -23,7 +23,7 @@ describe('Test CRUD for all fields', () => {
           const keystoneTestWrapper = (testFn = () => {}) =>
             runner(
               () => {
-                const name = `Field tests for ${mod.name} ${cuid}`;
+                const name = `Field tests for ${mod.name} ${cuid()}`;
                 const createLists = keystone => {
                   // Create a list with all the fields required for testing
                   const fields = mod.getTestFields();

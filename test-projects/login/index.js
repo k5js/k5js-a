@@ -1,14 +1,26 @@
-const { Keystone, PasswordAuthStrategy } = require('@keystone-alpha/keystone');
-const { Text, Password, Relationship } = require('@keystone-alpha/fields');
-const { MongooseAdapter } = require('@keystone-alpha/adapter-mongoose');
-const { GraphQLApp } = require('@keystone-alpha/app-graphql');
-const { AdminUIApp } = require('@keystone-alpha/app-admin-ui');
+const { Keystone } = require('@k5js/keystone');
+const { PasswordAuthStrategy } = require('@k5js/auth-password');
+const { Text, Password, Relationship, Checkbox } = require('@k5js/fields');
+const { MongooseAdapter } = require('@k5js/adapter-mongoose');
+const { GraphQLApp } = require('@k5js/app-graphql');
+const { AdminUIApp } = require('@k5js/app-admin-ui');
+
+const {
+  createdAt,
+  createdBy,
+  updatedAt,
+  updatedBy,
+  atTracking,
+  byTracking,
+} = require('@k5js/list-plugins');
+
+const defaultAccess = ({ authentication: { item } }) => !!item;
 
 const keystone = new Keystone({
   name: 'Cypress Test Project For Login',
   adapter: new MongooseAdapter(),
   defaultAccess: {
-    list: ({ authentication: { item } }) => !!item,
+    list: defaultAccess,
   },
 });
 
@@ -24,8 +36,16 @@ keystone.createList('User', {
     name: { type: Text },
     email: { type: Text },
     password: { type: Password },
+    isAdmin: { type: Checkbox },
   },
   labelResolver: item => `${item.name} <${item.email}>`,
+  access: {
+    create: defaultAccess,
+    read: defaultAccess,
+    update: defaultAccess,
+    delete: defaultAccess,
+    auth: true,
+  },
 });
 
 keystone.createList('Post', {
@@ -36,7 +56,32 @@ keystone.createList('Post', {
   },
 });
 
+keystone.createList('ListWithPlugin', {
+  fields: {
+    text: { type: Text },
+  },
+  plugins: [
+    atTracking(),
+    createdAt({ createdAtField: 'whenCreated' }),
+    updatedAt({ updatedAtField: 'whenUpdated' }),
+    byTracking({
+      createdByField: 'creator',
+      updatedByField: 'updater',
+    }),
+    createdBy(),
+    updatedBy(),
+  ],
+});
+
 module.exports = {
   keystone,
-  apps: [new GraphQLApp(), new AdminUIApp({ adminPath: '/admin', authStrategy })],
+  apps: [
+    new GraphQLApp(),
+    new AdminUIApp({
+      adminPath: '/admin',
+      authStrategy,
+      isAccessAllowed: ({ authentication: { item, listKey } }) =>
+        !!item && listKey === 'User' && !!item.isAdmin,
+    }),
+  ],
 };

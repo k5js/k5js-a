@@ -1,32 +1,96 @@
+const express = require('express');
+const supertest = require('supertest-light');
 const MongoDBMemoryServer = require('mongodb-memory-server').default;
 const pFinally = require('p-finally');
 const url = require('url');
-const { Keystone } = require('@keystone-alpha/keystone');
-const { GraphQLApp } = require('@keystone-alpha/app-graphql');
-const { KnexAdapter } = require('@keystone-alpha/adapter-knex');
-const { MongooseAdapter } = require('@keystone-alpha/adapter-mongoose');
+const { Keystone } = require('@k5js/keystone');
+const { GraphQLApp } = require('@k5js/app-graphql');
+const { KnexAdapter } = require('@k5js/adapter-knex');
+const { MongooseAdapter } = require('@k5js/adapter-mongoose');
 
-const SCHEMA_NAME = 'testing';
-
-function setupServer({ name, adapterName, createLists = () => {} }) {
+async function setupServer({
+  name,
+  adapterName,
+  schemaName = 'testing',
+  schemaNames = ['testing'],
+  createLists = () => {},
+  keystoneOptions,
+  graphqlOptions = {},
+}) {
   const Adapter = { mongoose: MongooseAdapter, knex: KnexAdapter }[adapterName];
-  const args = { mongoose: {}, knex: { dropDatabase: true } }[adapterName];
+
+  const argGenerator = {
+    mongoose: getMongoMemoryServerConfig,
+    knex: () => ({
+      dropDatabase: true,
+      knexOptions: { connection: process.env.KNEX_URI || 'postgres://localhost/keystone' },
+    }),
+  }[adapterName];
+
   const keystone = new Keystone({
     name,
-    adapter: new Adapter(args),
+    adapter: new Adapter(await argGenerator()),
     defaultAccess: { list: true, field: true },
+    schemaNames,
+    ...keystoneOptions,
   });
 
   createLists(keystone);
 
-  // Has the side-effect of registering the schema with the keystone object
-  new GraphQLApp({ schemaName: SCHEMA_NAME }).prepareMiddleware({ keystone, dev: true });
+  const apps = [
+    new GraphQLApp({
+      schemaName,
+      apiPath: '/admin/api',
+      graphiqlPath: '/admin/graphiql',
+      apollo: {
+        tracing: true,
+        cacheControl: {
+          defaultMaxAge: 3600,
+        },
+      },
+      ...graphqlOptions,
+    }),
+  ];
 
-  return { keystone };
+  const { middlewares } = await keystone.prepare({ dev: true, apps });
+
+  const app = express();
+  app.use(middlewares);
+
+  return { keystone, app };
 }
 
-function graphqlRequest({ keystone, query }) {
-  return keystone._graphQLQuery[SCHEMA_NAME](query, keystone.getAccessContext(SCHEMA_NAME, {}));
+function graphqlRequest({ keystone, query, variables, operationName }) {
+  return keystone.executeQuery(query, {
+    variables,
+    operationName,
+  });
+}
+
+function networkedGraphqlRequest({
+  app,
+  query,
+  variables = undefined,
+  headers = {},
+  expectedStatusCode = 200,
+  operationName,
+}) {
+  const request = supertest(app).set('Accept', 'application/json');
+
+  Object.entries(headers).forEach(([key, value]) => request.set(key, value));
+
+  return request
+    .post('/admin/api', { query, variables, operationName })
+    .then(res => {
+      expect(res.statusCode).toBe(expectedStatusCode);
+      return {
+        ...JSON.parse(res.text),
+        res,
+      };
+    })
+    .catch(error => ({
+      errors: [error],
+    }));
 }
 
 // One instance per node.js thread which cleans itself up when the main process
@@ -86,54 +150,44 @@ function getDelete(keystone) {
   return (list, id) => keystone.getListByKey(list).adapter.delete(id);
 }
 
-function keystoneMongoRunner(setupKeystoneFn, testFn) {
-  return async function() {
-    const setup = await setupKeystoneFn('mongoose');
-    const { keystone } = setup;
+function _keystoneRunner(adapterName, tearDownFunction) {
+  return function(setupKeystoneFn, testFn) {
+    return async function() {
+      if (!testFn) {
+        // If a testFn is not defined then we just need
+        // to excute setup and tear down in isolation.
+        try {
+          await setupKeystoneFn(adapterName);
+        } catch (error) {
+          await tearDownFunction();
+          throw error;
+        }
+        return;
+      }
+      const setup = await setupKeystoneFn(adapterName);
+      const { keystone } = setup;
 
-    const { mongoUri, dbName } = await getMongoMemoryServerConfig();
+      await keystone.connect();
 
-    await keystone.connect(mongoUri, { dbName });
-
-    return pFinally(
-      testFn({
-        ...setup,
-        create: getCreate(keystone),
-        findById: getFindById(keystone),
-        findOne: getFindOne(keystone),
-        update: getUpdate(keystone),
-        delete: getDelete(keystone),
-      }),
-      () => keystone.disconnect().then(teardownMongoMemoryServer)
-    );
-  };
-}
-
-function keystoneKnexRunner(setupKeystoneFn, testFn) {
-  return async function() {
-    const setup = await setupKeystoneFn('knex');
-    const { keystone } = setup;
-
-    await keystone.connect();
-
-    return pFinally(
-      testFn({
-        ...setup,
-        create: getCreate(keystone),
-        findById: getFindById(keystone),
-        findOne: getFindOne(keystone),
-        update: getUpdate(keystone),
-        delete: getDelete(keystone),
-      }),
-      () => keystone.disconnect()
-    );
+      return pFinally(
+        testFn({
+          ...setup,
+          create: getCreate(keystone),
+          findById: getFindById(keystone),
+          findOne: getFindOne(keystone),
+          update: getUpdate(keystone),
+          delete: getDelete(keystone),
+        }),
+        () => keystone.disconnect().then(tearDownFunction)
+      );
+    };
   };
 }
 
 function multiAdapterRunners(only) {
   return [
-    { runner: keystoneMongoRunner, adapterName: 'mongoose' },
-    { runner: keystoneKnexRunner, adapterName: 'knex' },
+    { runner: _keystoneRunner('mongoose', teardownMongoMemoryServer), adapterName: 'mongoose' },
+    { runner: _keystoneRunner('knex', () => {}), adapterName: 'knex' },
   ].filter(a => typeof only === 'undefined' || a.adapterName === only);
 }
 
@@ -166,5 +220,6 @@ module.exports = {
   setupServer,
   multiAdapterRunners,
   graphqlRequest,
+  networkedGraphqlRequest,
   matchFilter,
 };

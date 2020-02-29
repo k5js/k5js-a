@@ -1,5 +1,5 @@
 import { File, MongoFileInterface, KnexFileInterface } from './Implementation';
-import { importView } from '@keystone-alpha/build-field-types';
+import { importView } from '@k5js/build-field-types';
 
 export default {
   type: 'File',

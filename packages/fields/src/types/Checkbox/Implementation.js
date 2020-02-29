@@ -1,20 +1,21 @@
 import { Implementation } from '../../Implementation';
-import { MongooseFieldAdapter } from '@keystone-alpha/adapter-mongoose';
-import { KnexFieldAdapter } from '@keystone-alpha/adapter-knex';
+import { MongooseFieldAdapter } from '@k5js/adapter-mongoose';
+import { KnexFieldAdapter } from '@k5js/adapter-knex';
 
 export class Checkbox extends Implementation {
   constructor() {
     super(...arguments);
+    this.isOrderable = true;
   }
 
-  get gqlOutputFields() {
+  gqlOutputFields() {
     return [`${this.path}: Boolean`];
   }
-  get gqlOutputFieldResolvers() {
+  gqlOutputFieldResolvers() {
     return { [`${this.path}`]: item => item[this.path] };
   }
 
-  get gqlQueryInputFields() {
+  gqlQueryInputFields() {
     return this.equalityInputFields('Boolean');
   }
   get gqlUpdateInputFields() {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PageError from '../components/PageError';
-import { Button } from '@arch-ui/button';
+import { Button } from '@k5ui/button';
 
 const InvalidRoutePage = ({ adminPath }) => (
   <PageError>

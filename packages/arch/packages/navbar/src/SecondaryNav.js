@@ -1,9 +1,7 @@
-// @flow
-
-import React, { type Node } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 
-import { colors, gridSize } from '@arch-ui/theme';
+import { colors, gridSize } from '@k5ui/theme';
 import { ItemElement } from './common';
 
 const Wrapper = styled.nav({
@@ -27,6 +25,4 @@ export const SecondaryNavItem = styled(ItemElement)(({ isSelected }) => ({
   },
 }));
 
-type Props = { children: Node };
-
-export const SecondaryNav = ({ children }: Props) => <Wrapper>{children}</Wrapper>;
+export const SecondaryNav = ({ children }) => <Wrapper>{children}</Wrapper>;

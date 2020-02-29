@@ -2,8 +2,8 @@
 
 import { Component } from 'react';
 import { jsx } from '@emotion/core';
-import { Options } from '@arch-ui/options';
-import { arrayToObject } from '@keystone-alpha/utils';
+import { Options } from '@k5ui/options';
+import { arrayToObject } from '@k5js/utils';
 
 function isOptionSelected(opt, selected) {
   return Boolean(selected.filter(x => x.path === opt.path).length);
@@ -11,6 +11,8 @@ function isOptionSelected(opt, selected) {
 function getOptionValue(opt) {
   return opt.path;
 }
+
+export const pseudoLabelField = { label: 'Label', path: '_label_' };
 
 /**
  * Why does this exist?

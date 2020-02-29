@@ -1,49 +1,71 @@
 <!--[meta]
 section: quick-start
-title: Introduction
+title: Getting Started
+order: 1
+slug: /quick-start/
 [meta]-->
 
-# Quick Start
+# Getting Started
 
-## Welcome
+## Your first KeystoneJS app in 5 minutes.
 
-This quick start guide will get you up and running with a fresh new KeystoneJS application in just a few easy commands.
+This quick start guide will get you up and running in just a few minutes. Let's build a simple todo app with a fresh install of Keystone 5!
 
-With just _5 minutes_, this is what you're going to build:
+![Screenshot of KeystoneJS Todo App](./img/to-do-app-example.png)
 
-[![Screenshot of the final Todo app](./img/todo-thumb.png)](https://raw.githubusercontent.com/keystonejs/keystone-5/master/docs/quick-start/img/todo.png)
-
-[![Screenshot of KeystoneJS Admin Dashboard](./img/admin-dashboard-thumb.png)](https://raw.githubusercontent.com/keystonejs/keystone-5/master/docs/quick-start/img/admin-dashboard.png)
-
-[![Screenshot of KeystoneJS Admin Todo List](./img/admin-list-thumb.png)](https://raw.githubusercontent.com/keystonejs/keystone-5/master/docs/quick-start/img/admin-list.png)
+<br/>
 
 ## Requirements
 
-Please make sure your computer/server meets the following requirements:
+Before we start, check that your computer or server meets the following requirements:
 
 - [Node.js](https://nodejs.org/) >= 10.x: Node.js is a server platform which runs JavaScript.
-- [MongoDB](../quick-start/mongodb.md) >= 4.x: MongoDB is a powerful document store.
+
+And ONE of the following databases:
+
+- [MongoDB](https://www.mongodb.com/) >= 4.x: MongoDB is a powerful NoSQL document storage database.
+- [Postgres](https://www.postgresql.org) >= 9.x: PostgreSQL is an open source relational database that uses the SQL language.
+
+Finally, make sure [your database is configured and running](/docs/quick-start/adapters.md).
+
+All set? Great, let's get started!
 
 ## Installation
 
-To create a new KeystoneJS application, ensure [mongodb is running](../quick-start/mongodb.md) and then run the following commands.
+To create a new KeystoneJS application, run the following commands in your terminal:
 
 ```sh
 npm init keystone-app my-app
-cd my-app
-npm start
 ```
 
 or with yarn:
 
 ```sh
 yarn create keystone-app my-app
-cd my-app
-yarn start
 ```
 
-Congratulations, you are now running your very own KeystoneJS application!
-To visit your running application (a simple todo list), visit
+You'll be prompted with a few questions:
+
+1. **What is your project name?** Pick any name for your project. You can change it later if you like.
+2. **Select a starter project.** Select the `Todo` application if you wish to follow this guide.
+3. **Select an adapter.** We'll go more into database adapters later. For now, simply choose `Mongoose` if you're running a MongoDB database and `Knex` if you're running a Postgres one.
+
+If you want to perform an unattended app generation (i.e. skipping the prompts), see the [CLI arguments](/packages/create-keystone-app/README.md) of the `create-keystone-app` utility script.
+
+Wait a few minutes for all the project dependencies to install. Once that's finished, run this:
+
+```sh
+cd my-app
+npm run dev
+```
+
+## Congratulations! 🎉
+
+You are now running your very own KeystoneJS application! Here's what you get out of the box:
+
+### A simple todo application
+
+Your app is up and running at the following URL:
 
 <pre>
 	<code>
@@ -51,7 +73,9 @@ To visit your running application (a simple todo list), visit
 	</code>
 </pre>
 
-Your application also has an Admin UI, which lets you directly manipulate the data in your database
+### An Admin UI for content management
+
+Your application also has an Admin UI, which lets you directly manipulate the data in your database:
 
 <pre>
 	<code>
@@ -59,8 +83,10 @@ Your application also has an Admin UI, which lets you directly manipulate the da
 	</code>
 </pre>
 
-Both your application and the admin UI are powered by a GraphQL API.
-KeystoneJS provides a web interface for this API at
+### A GraphQL API
+
+Both your application and the Admin UI are powered by a GraphQL API.
+KeystoneJS provides a web interface for this API at this URL:
 
 <pre>
 	<code>
@@ -68,8 +94,11 @@ KeystoneJS provides a web interface for this API at
 	</code>
 </pre>
 
-## Up Next
+## What next?
 
-- [Schema - Lists & Fields](../discussions/schema.md)
-- [Using the KeystoneJS Admin UI](../tutorials/admin-ui.md)
-- [Introduction To KeystoneJS's GraphQL API](../tutorials/intro-to-graphql.md)
+This todo app is a good introduction to KeystoneJS, but chances are you'll want to build something a bit more complex and secure than that!
+
+The [guides section](/docs/guides/index.md) is a great next step.
+It will walk you through concepts like [creating lists](/docs/guides/add-lists.md),
+setting up [content relationships](/docs/guides/relationships.md),
+managing [Access control](/docs/guides/access-control.md) and much more.

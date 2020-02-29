@@ -1,4 +1,3 @@
-// @flow weak
 // based on https://github.com/SquidDev/MirrorMark/blob/master/src/js/mirrormark.js
 import React from 'react';
 import {
@@ -9,7 +8,7 @@ import {
   ListOrderedIcon,
   ListUnorderedIcon,
   FileMediaIcon,
-} from '@arch-ui/icons';
+} from '@k5ui/icons';
 
 export let getTools = cm => {
   function toggleBefore(insertion) {

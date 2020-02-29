@@ -1,4 +1,4 @@
-import { identity } from '@keystone-alpha/utils';
+import { identity } from '@k5js/utils';
 const noop = () => {};
 
 // A depth-first, top-down tree walking algorithm.

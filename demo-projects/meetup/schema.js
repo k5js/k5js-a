@@ -11,9 +11,9 @@ const {
   Relationship,
   Select,
   Text,
-} = require('@keystone-alpha/fields');
-const { CloudinaryAdapter } = require('@keystone-alpha/file-adapters');
-const { Wysiwyg } = require('@keystone-alpha/fields-wysiwyg-tinymce');
+} = require('@k5js/fields');
+const { CloudinaryAdapter } = require('@k5js/file-adapters');
+const { Wysiwyg } = require('@k5js/fields-wysiwyg-tinymce');
 
 const cloudinaryAdapter = new CloudinaryAdapter({
   cloudName: process.env.CLOUDINARY_CLOUD_NAME,
@@ -23,12 +23,7 @@ const cloudinaryAdapter = new CloudinaryAdapter({
 
 const access = {
   userIsAdmin: ({ authentication: { item: user } }) => Boolean(user && user.isAdmin),
-  userIsCurrentAuth: ({ authentication: { item } }) => {
-    if (!item) {
-      return false;
-    }
-    return { id: item.id };
-  },
+  userIsCurrentAuth: ({ authentication: { item: user } }) => Boolean(user), // item will be undefined for anonymous user
 };
 
 // Read: public / Write: admin

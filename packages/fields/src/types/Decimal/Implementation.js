@@ -1,22 +1,23 @@
 import mongoose from 'mongoose';
 import { Implementation } from '../../Implementation';
-import { MongooseFieldAdapter } from '@keystone-alpha/adapter-mongoose';
-import { KnexFieldAdapter } from '@keystone-alpha/adapter-knex';
+import { MongooseFieldAdapter } from '@k5js/adapter-mongoose';
+import { KnexFieldAdapter } from '@k5js/adapter-knex';
 
 export class Decimal extends Implementation {
   constructor(path, { symbol }) {
     super(...arguments);
     this.symbol = symbol;
+    this.isOrderable = true;
   }
 
-  get gqlOutputFields() {
+  gqlOutputFields() {
     return [`${this.path}: String`];
   }
-  get gqlOutputFieldResolvers() {
+  gqlOutputFieldResolvers() {
     return { [`${this.path}`]: item => item[this.path] };
   }
 
-  get gqlQueryInputFields() {
+  gqlQueryInputFields() {
     return [
       ...this.equalityInputFields('String'),
       ...this.orderingInputFields('String'),
@@ -51,7 +52,7 @@ export class MongoDecimalInterface extends MongooseFieldAdapter {
   }
 
   setupHooks({ addPreSaveHook, addPostReadHook }) {
-    // Updates the relevant value in the item provided (by referrence)
+    // Updates the relevant value in the item provided (by reference)
     addPreSaveHook(item => {
       if (item[this.path] && typeof item[this.path] === 'string') {
         item[this.path] = mongoose.Types.Decimal128.fromString(item[this.path]);

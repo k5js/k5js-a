@@ -1,0 +1,16 @@
+{
+  "name": "@k5js/app-schema-router",
+  "description": "KeystoneJS GraphQL App.",
+  "version": "0.0.0",
+  "author": "The KeystoneJS Development Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "peerDependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -3,12 +3,12 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { Helmet } from 'react-helmet';
 import { Link, graphql } from 'gatsby';
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import { MDXProvider } from '@mdx-js/react';
 import { jsx } from '@emotion/core';
 import { SkipNavContent } from '@reach/skip-nav';
-import { borderRadius, colors, gridSize } from '@arch-ui/theme';
+import { borderRadius, colors, gridSize } from '@k5ui/theme';
 
 import Layout from '../templates/layout';
 import mdComponents from '../components/markdown';
@@ -35,7 +35,10 @@ export default function Template({
   pageContext: { slug },
 }) {
   let navData = useNavData();
-  let flatNavData = [].concat(...Object.values(navData));
+  let flatNavData = navData.reduce((prev, next) => {
+    const subNavData = next.subNavs.reduce((prev, next) => [...prev].concat(next.pages), []);
+    return [...prev, ...next.pages, ...subNavData];
+  }, []);
   let currentPageIndex = flatNavData.findIndex(node => node.path === slug);
   let prev, next;
   if (currentPageIndex !== 0) {
@@ -45,7 +48,7 @@ export default function Template({
     next = flatNavData[currentPageIndex + 1];
   }
 
-  const { code, fields } = mdx;
+  const { body, fields } = mdx;
   const { siteMetadata } = site;
   const suffix = fields.navGroup ? ` (${titleCase(fields.navGroup)})` : '';
   const title = `${
@@ -72,7 +75,7 @@ export default function Template({
               <main>
                 <SkipNavContent />
                 <MDXProvider components={mdComponents}>
-                  <MDXRenderer>{code.body}</MDXRenderer>
+                  <MDXRenderer>{body}</MDXRenderer>
                 </MDXProvider>
               </main>
               <EditSection>
@@ -344,10 +347,7 @@ const Content = props => (
 export const pageQuery = graphql`
   query($mdPageId: String!) {
     mdx(id: { eq: $mdPageId }) {
-      rawBody
-      code {
-        body
-      }
+      body
       fields {
         heading
         description

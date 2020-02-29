@@ -1,4 +1,59 @@
+# @keystonejs/session
+
+## 5.1.0
+
+### Minor Changes
+
+- [`517b23e4`](https://github.com/keystonejs/keystone/commit/517b23e4b17414ed1807e8d7af1e67377ba3b7bf) [#2391](https://github.com/keystonejs/keystone/pull/2391) Thanks [@timleslie](https://github.com/timleslie)! - Removed support for Node 8.x, as it is [no longer in maintenance mode](https://nodejs.org/en/about/releases/).
+
+## 5.0.0
+
+### Major Changes
+
+- [`7b4ed362`](https://github.com/keystonejs/keystone-5/commit/7b4ed3623f5774d7783c39962bfa1ce97938e310) [#1821](https://github.com/keystonejs/keystone-5/pull/1821) Thanks [@jesstelford](https://github.com/jesstelford)! - Release @keystonejs/\* packages (つ＾ ◡ ＾)つ
+
+  - This is the first release of `@keystonejs/*` packages (previously `@keystone-alpha/*`).
+  - All packages in the `@keystone-alpha` namespace are now available in the `@keystonejs` namespace, starting at version `5.0.0`.
+  - To upgrade your project you must update any `@keystone-alpha/*` dependencies in `package.json` to point to `"@keystonejs/*": "^5.0.0"` and update any `require`/`import` statements in your code.
+
 # @keystone-alpha/session
+
+## 3.0.3
+
+### Patch Changes
+
+- [`61d0f428`](https://github.com/keystonejs/keystone-5/commit/61d0f428097f8fe3c164d3d123ec5e4b5040a6fa) [#1773](https://github.com/keystonejs/keystone-5/pull/1773) Thanks [@timleslie](https://github.com/timleslie)! - Cleanly handle the situation where an authed session item is no longer in the system.
+
+## 3.0.2
+
+### Patch Changes
+
+- [a6d384b1](https://github.com/keystonejs/keystone-5/commit/a6d384b1): Populate session item using `getAccessControlledItem()` rather than `findById()`.
+
+## 3.0.1
+
+### Patch Changes
+
+- [9b532072](https://github.com/keystonejs/keystone-5/commit/9b532072): Rename Keystone to KeystoneJS in docs where possible in docs
+
+## 3.0.0
+
+### Major Changes
+
+- [0a627ef9](https://github.com/keystonejs/keystone-5/commit/0a627ef9): Adds a `cookieMaxAge` and `secureCookies` option to the keystone constructor.
+
+  These will default to 30 days for `cookieMaxAge` and `true` in production `false` in other environments for `secureCookies`.
+
+  ### Usage
+
+  ```javascript
+  const keystone = new Keystone({
+    cookieMaxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+    secureCookies: true,
+  });
+  ```
+
+  Note: `commonSessionMiddleware` now accepts a config object rather than multiple arguments.
 
 ## 2.0.1
 

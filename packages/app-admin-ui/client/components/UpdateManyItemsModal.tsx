@@ -1,15 +1,16 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { Component, Fragment, useMemo, useCallback, Suspense } from 'react';
-import { Mutation } from 'react-apollo';
-import { Button, LoadingButton } from '@arch-ui/button';
-import Drawer from '@arch-ui/drawer';
-import { FieldContainer, FieldLabel, FieldInput } from '@arch-ui/fields';
-import Select from '@arch-ui/select';
-import { omit, arrayToObject, countArrays } from '@keystone-alpha/utils';
-import { LoadingIndicator } from '@arch-ui/loading';
+import { useMutation } from '@apollo/react-hooks';
+import { Button, LoadingButton } from '@k5ui/button';
+import Drawer from '@k5ui/drawer';
+import { FieldContainer, FieldLabel, FieldInput } from '@k5ui/fields';
+import Select from '@k5ui/select';
+import { omit, arrayToObject, countArrays } from '@k5js/utils';
+import { LoadingIndicator } from '@k5ui/loading';
 
 import { validateFields } from '../util';
+import CreateItemModal from './CreateItemModal';
 
 const Render = ({ children }) => children();
 
@@ -76,7 +77,7 @@ class UpdateManyModal extends Component<Props, State> {
   };
 
   resetState = () => {
-    this.setState({ item: this.props.list.getInitialItemData(), selectedFields: [] });
+    this.setState({ item: this.props.list.getInitialItemData({}), selectedFields: [] });
   };
   onClose = () => {
     const { isLoading } = this.props;
@@ -96,7 +97,9 @@ class UpdateManyModal extends Component<Props, State> {
   handleSelect = selected => {
     const { list } = this.props;
     const selectedFields = selected.map(({ path, value }) => {
-      return list.fields.find(f => f.path === path || f.path === value);
+      return list.fields
+        .filter(({ isPrimaryKey }) => !isPrimaryKey)
+        .find(f => f.path === path || f.path === value);
     });
     this.setState({ selectedFields });
   };
@@ -109,7 +112,7 @@ class UpdateManyModal extends Component<Props, State> {
   getOptions = () => {
     const { list } = this.props;
     // remove the `options` key from select type fields
-    return list.fields.map(f => omit(f, ['options']));
+    return list.fields.filter(({ isPrimaryKey }) => !isPrimaryKey).map(f => omit(f, ['options']));
   };
   render() {
     const { isLoading, isOpen, items, list } = this.props;
@@ -194,6 +197,7 @@ class UpdateManyModal extends Component<Props, State> {
                         warnings={validationWarnings[field.path] || []}
                         onChange={onChange}
                         renderContext="dialog"
+                        CreateItemModal={CreateItemModal}
                       />
                     ),
                     [
@@ -215,21 +219,9 @@ class UpdateManyModal extends Component<Props, State> {
   }
 }
 
-export default class UpdateManyModalWithMutation extends Component<{
-  list?;
-  isOpen?;
-  items?;
-  onClose?;
-  onUpdate?;
-}> {
-  render() {
-    const { list } = this.props;
-    return (
-      <Mutation mutation={list.updateManyMutation}>
-        {(updateItem, { loading }) => (
-          <UpdateManyModal updateItem={updateItem} isLoading={loading} {...this.props} />
-        )}
-      </Mutation>
-    );
-  }
+export default function UpdateManyModalWithMutation(props) {
+  const { list } = props;
+  const [updateItem, { loading }] = useMutation(list.updateManyMutation);
+
+  return <UpdateManyModal updateItem={updateItem} isLoading={loading} {...props} />;
 }

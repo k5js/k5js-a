@@ -4,15 +4,15 @@ import React, { Component, Suspense, Fragment } from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-import { captureSuspensePromises, noop } from '@keystone-alpha/utils';
-import { DiffIcon, KebabHorizontalIcon, LinkIcon, ShieldIcon, TrashcanIcon } from '@arch-ui/icons';
-import { colors, gridSize } from '@arch-ui/theme';
-import { alpha } from '@arch-ui/color-utils';
-import { Button } from '@arch-ui/button';
-import { CheckboxPrimitive } from '@arch-ui/controls';
-import Dropdown from '@arch-ui/dropdown';
-import { A11yText } from '@arch-ui/typography';
-import { Card } from '@arch-ui/card';
+import { captureSuspensePromises, noop } from '@k5js/utils';
+import { KebabHorizontalIcon, LinkIcon, ShieldIcon, TrashcanIcon } from '@k5ui/icons';
+import { colors, gridSize } from '@k5ui/theme';
+import { alpha } from '@k5ui/color-utils';
+import { Button } from '@k5ui/button';
+import { CheckboxPrimitive } from '@k5ui/controls';
+import Dropdown from '@k5ui/dropdown';
+import { A11yText } from '@k5ui/typography';
+import { Card } from '@k5ui/card';
 import DeleteItemModal from './DeleteItemModal';
 import copyToClipboard from 'clipboard-copy';
 import { useListSort } from '../pages/List/dataHooks';
@@ -170,7 +170,7 @@ class ListRow extends Component<ListRowProp> {
   mounted: boolean;
   getCheckbox: $TSFixMe;
 
-  static defaultProps = { itemErrors: {} };
+  static defaultProps = { itemErrors: {}, linkField: '_label_' };
   state = { showDeleteModal: false };
   componentDidMount() {
     this.mounted = true;
@@ -214,15 +214,9 @@ class ListRow extends Component<ListRowProp> {
     );
   }
   render() {
-    const { list, link, isSelected, item, itemErrors, fields } = this.props;
-    const copyText = window.location.origin + link({ path: list.path, id: item.id });
+    const { list, link, isSelected, item, itemErrors, fields, linkField } = this.props;
+    const copyText = window.location.origin + link({ path: list.path, item });
     const items = [
-      {
-        content: 'Duplicate',
-        icon: <DiffIcon />,
-        isDisabled: true, // TODO: implement duplicate
-        onClick: () => console.log('TODO'),
-      },
       {
         content: 'Copy Link',
         icon: <LinkIcon />,
@@ -259,10 +253,10 @@ class ListRow extends Component<ListRowProp> {
             );
           }
 
-          if (path === '_label_') {
+          if (path === linkField) {
             return (
               <BodyCellTruncated isSelected={isSelected} key={path}>
-                <ItemLink to={link({ path: list.path, id: item.id })}>{item._label_}</ItemLink>
+                <ItemLink to={link({ path: list.path, item })}>{item[linkField]}</ItemLink>
               </BodyCellTruncated>
             );
           }
@@ -343,6 +337,8 @@ export default function ListTable(props) {
     currentPage,
     filters,
     search,
+    itemLink = ({ path, item }) => `${adminPath}/${path}/${item.id}`,
+    linkField = '_label_',
   } = props;
 
   const [sortBy, onSortChange] = useListSort(list.key) as [$TSFixMe, $TSFixMe];
@@ -379,17 +375,20 @@ export default function ListTable(props) {
               />
             </div>
           </HeaderCell>
-          {fields.map(field => (
-            <SortLink
-              data-field={field.path}
-              key={field.path}
-              sortable={field.path !== '_label_'}
-              field={field}
-              handleSortChange={onSortChange}
-              active={sortBy.field.path === field.path}
-              sortAscending={sortBy.direction === 'ASC'}
-            />
-          ))}
+          {fields.map(field => {
+            if (!sortBy) return;
+            return (
+              <SortLink
+                data-field={field.path}
+                key={field.path}
+                sortable={field.path !== '_label_' && field.config.isOrderable}
+                field={field}
+                handleSortChange={onSortChange}
+                active={sortBy ? sortBy.field.path === field.path : false}
+                sortAscending={sortBy ? sortBy.direction === 'ASC' : 'ASC'}
+              />
+            );
+          })}
           <HeaderCell css={{ padding: 0 }}>{columnControl}</HeaderCell>
         </tr>
       </thead>
@@ -460,7 +459,8 @@ export default function ListTable(props) {
                         item={item}
                         itemErrors={queryErrors[itemIndex] || {}}
                         key={item.id}
-                        link={({ path, id }) => `${adminPath}/${path}/${id}`}
+                        link={itemLink}
+                        linkField={linkField}
                         list={list}
                         onDelete={onChange}
                         onSelectChange={onSelectChange}

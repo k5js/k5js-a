@@ -1,13 +1,18 @@
-const bolt = require('bolt');
+const getWorkspaces = require('get-workspaces').default;
 const fs = require('fs');
+const path = require('path');
 
 async function getPackagePlugins() {
-  const { dir: rootDir } = await bolt.getProject({ cwd: '../' });
+  const rootDir = path.resolve(__dirname, '..');
+  const docSections = fs.readdirSync(`${rootDir}/docs/`).filter(dir => {
+    const fullDir = path.join(`${rootDir}/docs/`, dir);
+    return fs.existsSync(fullDir) && fs.lstatSync(fullDir).isDirectory();
+  });
 
-  const workspaces = await bolt.getWorkspaces({ cwd: rootDir });
+  const workspaces = await getWorkspaces({ cwd: rootDir });
 
   return [
-    ...['quick-start', 'tutorials', 'guides', 'api', 'discussions'].map(name => ({
+    ...docSections.map(name => ({
       resolve: 'gatsby-source-filesystem',
       options: { name, path: `${rootDir}/docs/${name}/` },
     })),
@@ -22,7 +27,7 @@ async function getPackagePlugins() {
           // See `gatsby-node.js` for where it's used.
           name: config.name,
           path: `${dir}`,
-          ignore: [`**/**/CHANGELOG.md`],
+          ignore: [`**/**/CHANGELOG.md`, '**/*.{js,json}'],
         },
       })),
   ];
@@ -33,7 +38,7 @@ async function getGatsbyConfig() {
   return {
     siteMetadata: {
       title: `KeystoneJS`,
-      siteUrl: `https://v5.keystonejs.com`,
+      siteUrl: `https://keystonejs.com`,
       description: `A scalable platform and CMS to build Node.js applications.`,
       twitter: `@keystonejs`,
     },
@@ -64,16 +69,26 @@ async function getGatsbyConfig() {
         },
       },
       {
-        resolve: `gatsby-mdx`,
+        // https://github.com/gatsbyjs/gatsby/issues/15486#issuecomment-509405867
+        resolve: `gatsby-transformer-remark`,
+        options: {
+          plugins: [`gatsby-remark-images`],
+        },
+      },
+      {
+        resolve: `gatsby-plugin-mdx`,
         options: {
           extensions: ['.mdx', '.md'],
-          globalScope: `import { Props } from '${require.resolve('./src/components/props')}'
-          export default { Props }
-          `,
           defaultLayouts: {
             default: require.resolve('./src/components/mdx-renderer.js'),
           },
           gatsbyRemarkPlugins: [
+            {
+              resolve: 'gatsby-remark-autolink-headers',
+              options: {
+                icon: false, // we include our own icon
+              },
+            },
             { resolve: require.resolve('./plugins/gatsby-remark-fix-links') },
 
             {
@@ -85,21 +100,35 @@ async function getGatsbyConfig() {
             // This is needed to resolve svgs
             { resolve: 'gatsby-remark-copy-linked-files' },
           ],
-          rehypePlugins: [
-            require('rehype-slug'),
-            [require('@mapbox/rehype-prism'), { ignoreMissing: true }],
-          ],
+          rehypePlugins: [[require('@mapbox/rehype-prism'), { ignoreMissing: true }]],
         },
       },
       {
         resolve: 'gatsby-plugin-lunr',
         options: {
-          languages: [{ name: 'en' }],
+          languages: [
+            {
+              name: 'en',
+              filterNodes: node => {
+                const { context } = node;
+                const { fields } = node;
+                // I'm not sure why... but we get different types of nodes here
+                if (context || fields) {
+                  // Only only return false if draft is set to true,
+                  // undefined should default to not draft
+                  const draft = (context && context.draft) || (fields && fields.draft) || false;
+                  return Boolean(!draft);
+                }
+                return true;
+              },
+            },
+          ],
           // Fields to index. If store === true value will be stored in index file.
           // Attributes for custom indexing logic. See https://lunrjs.com/docs/lunr.Builder.html for details
           fields: [
             { name: 'content' },
             { name: 'navGroup', store: true },
+            { name: 'navSubGroup', store: true },
             { name: 'slug', store: true },
             { name: 'title', store: true, attributes: { boost: 20 } },
           ],
@@ -109,6 +138,7 @@ async function getGatsbyConfig() {
             Mdx: {
               content: node => node.rawBody,
               navGroup: node => node.fields.navGroup,
+              navSubGroup: node => node.fields.navSubGroup,
               slug: node => node.fields.slug,
               title: node => node.fields.pageTitle,
             },

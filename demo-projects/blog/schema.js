@@ -1,3 +1,4 @@
+require('dotenv').config();
 const {
   File,
   Text,
@@ -9,9 +10,9 @@ const {
   CalendarDay,
   DateTime,
   OEmbed,
-} = require('@keystone-alpha/fields');
-const { Wysiwyg } = require('@keystone-alpha/fields-wysiwyg-tinymce');
-const { LocalFileAdapter } = require('@keystone-alpha/file-adapters');
+} = require('@k5js/fields');
+const { Wysiwyg } = require('@k5js/fields-wysiwyg-tinymce');
+const { LocalFileAdapter } = require('@k5js/file-adapters');
 const getYear = require('date-fns/get_year');
 
 const { staticRoute, staticPath, distDir } = require('./config');
@@ -20,20 +21,20 @@ const dev = process.env.NODE_ENV !== 'production';
 let iframelyAdapter;
 
 if (process.env.IFRAMELY_API_KEY) {
-  const { IframelyOEmbedAdapter } = require('@keystone-alpha/oembed-adapters');
+  const { IframelyOEmbedAdapter } = require('@k5js/oembed-adapters');
   iframelyAdapter = new IframelyOEmbedAdapter({
     apiKey: process.env.IFRAMELY_API_KEY,
   });
 }
 
 const fileAdapter = new LocalFileAdapter({
-  directory: `${dev ? '' : `${distDir}/`}${staticPath}/uploads`,
-  route: `${staticRoute}/uploads`,
+  src: `${dev ? '' : `${distDir}/`}${staticPath}/uploads`,
+  path: `${staticRoute}/uploads`,
 });
 
 const avatarFileAdapter = new LocalFileAdapter({
-  directory: `${staticPath}/avatars`,
-  route: `${staticRoute}/avatars`,
+  src: `${staticPath}/avatars`,
+  path: `${staticRoute}/avatars`,
 });
 
 exports.User = {
@@ -74,7 +75,10 @@ exports.Post = {
     status: {
       type: Select,
       defaultValue: 'draft',
-      options: [{ label: 'Draft', value: 'draft' }, { label: 'Published', value: 'published' }],
+      options: [
+        { label: 'Draft', value: 'draft' },
+        { label: 'Published', value: 'published' },
+      ],
     },
     body: { type: Wysiwyg },
     posted: { type: DateTime, format: 'DD/MM/YYYY' },
