@@ -87,6 +87,6 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
-    "typescript": "^3.8.3"
+    "typescript": "^3.7.5"
   }
 }
