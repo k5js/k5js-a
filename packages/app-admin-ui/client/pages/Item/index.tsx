@@ -54,7 +54,6 @@ const getRenderableFields = memoizeOne(list =>
     .filter(({ maybeAccess, config }) => !!maybeAccess.update || !!config.isReadOnly)
 );
 
-
 type Props = {
   item?: $TSFixMe;
   adminPath?: string;
