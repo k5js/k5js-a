@@ -2,7 +2,7 @@ const gql = require('graphql-tag');
 const { print } = require('graphql/language/printer');
 
 // We don't want to actually log, so we mock it before we require the class
-jest.doMock('@keystonejs/logger', () => ({
+jest.doMock('@k5js/logger', () => ({
   logger: jest.fn(() => ({ warn: () => {}, log: () => {}, debug: () => {}, info: () => {} })),
 }));
 
