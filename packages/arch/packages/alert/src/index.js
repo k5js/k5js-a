@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { borderRadius, colors } from '@arch-ui/theme';
+import { borderRadius, colors } from '@k5ui/theme';
 
 const boldBackgroundColor = {
   info: colors.primary,

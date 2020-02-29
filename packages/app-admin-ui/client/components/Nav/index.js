@@ -7,19 +7,19 @@ import { uid } from 'react-uid';
 import styled from '@emotion/styled';
 import { jsx } from '@emotion/core';
 
-import { colors, gridSize } from '@arch-ui/theme';
-import { alpha } from '@arch-ui/color-utils';
+import { colors, gridSize } from '@k5ui/theme';
+import { alpha } from '@k5ui/color-utils';
 import {
   PrimaryNav,
   PrimaryNavItem,
   PrimaryNavHeading,
   PrimaryNavScrollArea,
   PRIMARY_NAV_GUTTER,
-} from '@arch-ui/navbar';
-import { Title } from '@arch-ui/typography';
-import Tooltip from '@arch-ui/tooltip';
-import { FlexGroup } from '@arch-ui/layout';
-import { PersonIcon } from '@arch-ui/icons';
+} from '@k5ui/navbar';
+import { Title } from '@k5ui/typography';
+import Tooltip from '@k5ui/tooltip';
+import { FlexGroup } from '@k5ui/layout';
+import { PersonIcon } from '@k5ui/icons';
 
 import { useAdminMeta } from '../../providers/AdminMeta';
 import ResizeHandler, { KEYBOARD_SHORTCUT } from './ResizeHandler';

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Container } from '@arch-ui/layout';
-import { Title } from '@arch-ui/typography';
+import { Container } from '@k5ui/layout';
+import { Title } from '@k5ui/typography';
 
 const About = () => (
   <Container>

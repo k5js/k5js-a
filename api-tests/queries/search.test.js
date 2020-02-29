@@ -1,5 +1,5 @@
-const { Text, Integer } = require('@keystonejs/fields');
-const { multiAdapterRunners, setupServer, graphqlRequest } = require('@keystonejs/test-utils');
+const { Text, Integer } = require('@k5js/fields');
+const { multiAdapterRunners, setupServer, graphqlRequest } = require('@k5js/test-utils');
 
 const cuid = require('cuid');
 

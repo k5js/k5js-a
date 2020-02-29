@@ -1,5 +1,5 @@
-import { MongooseFieldAdapter } from '@keystonejs/adapter-mongoose';
-import { KnexFieldAdapter } from '@keystonejs/adapter-knex';
+import { MongooseFieldAdapter } from '@k5js/adapter-mongoose';
+import { KnexFieldAdapter } from '@k5js/adapter-knex';
 import UnsplashAPI, { toJson } from 'unsplash-js';
 import queryString from 'query-string';
 

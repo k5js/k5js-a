@@ -2,10 +2,10 @@
 
 import { jsx } from '@emotion/core';
 
-import { colors, gridSize } from '@arch-ui/theme';
-import { ShieldIcon } from '@arch-ui/icons';
+import { colors, gridSize } from '@k5ui/theme';
+import { ShieldIcon } from '@k5ui/icons';
 
-import { FieldContainer, FieldDescription } from '@arch-ui/fields';
+import { FieldContainer, FieldDescription } from '@k5ui/fields';
 import PrettyData from '../prettyData';
 
 export const FieldLabel = props => {

@@ -8,11 +8,11 @@ jest.doMock('@keystonejs/logger', () => ({
 
 const List = require('../lib/List');
 const { AccessDeniedError } = require('../lib/List/graphqlErrors');
-const { Text, Checkbox, Float, Relationship, Integer } = require('@keystonejs/fields');
-const { getType } = require('@keystonejs/utils');
+const { Text, Checkbox, Float, Relationship, Integer } = require('@k5js/fields');
+const { getType } = require('@k5js/utils');
 const path = require('path');
 
-let fieldsPackagePath = path.dirname(require.resolve('@keystonejs/fields/package.json'));
+let fieldsPackagePath = path.dirname(require.resolve('@k5js/fields/package.json'));
 function resolveViewPath(viewPath) {
   return path.join(fieldsPackagePath, 'src', 'types', viewPath);
 }

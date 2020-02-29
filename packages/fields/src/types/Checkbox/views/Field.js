@@ -2,9 +2,9 @@
 
 import { jsx } from '@emotion/core';
 
-import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@arch-ui/fields';
+import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@k5ui/fields';
 
-import { CheckboxPrimitive } from '@arch-ui/controls';
+import { CheckboxPrimitive } from '@k5ui/controls';
 
 const TextField = ({ onChange, autoFocus, field, value, errors }) => {
   const handleChange = event => {

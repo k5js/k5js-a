@@ -3,7 +3,7 @@
 import React, { forwardRef } from 'react'; // eslint-disable-line no-unused-vars
 import { Link } from 'gatsby';
 import { jsx } from '@emotion/core';
-import { colors, gridSize } from '@arch-ui/theme';
+import { colors, gridSize } from '@k5ui/theme';
 
 import logosvg from '../assets/logo.svg';
 import { Container, SocialIconsNav } from '../components';

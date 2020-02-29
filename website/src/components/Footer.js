@@ -2,7 +2,7 @@
 
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from '@emotion/core';
-import { colors } from '@arch-ui/theme';
+import { colors } from '@k5ui/theme';
 
 const Anchor = props => <a css={{ color: colors.N60, textDecoration: 'none' }} {...props} />;
 

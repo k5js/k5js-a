@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input } from '@arch-ui/input';
+import { Input } from '@k5ui/input';
 
 export default class TextFilterView extends Component {
   handleChange = ({ target: { value } }) => {

@@ -1,9 +1,9 @@
 /** @jsx jsx */
 
 import { jsx } from '@emotion/core';
-import { colors, gridSize } from '@arch-ui/theme';
-import { ShieldIcon } from '@arch-ui/icons';
-import { Lozenge } from '@arch-ui/lozenge';
+import { colors, gridSize } from '@k5ui/theme';
+import { ShieldIcon } from '@k5ui/icons';
+import { Lozenge } from '@k5ui/lozenge';
 
 export const FieldContainer = props => (
   <div data-selector="field-container" css={{ marginBottom: gridSize * 2 }} {...props} />

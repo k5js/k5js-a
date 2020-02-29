@@ -1,12 +1,12 @@
 const { gen, sampleOne } = require('testcheck');
-const { Text, Relationship } = require('@keystonejs/fields');
+const { Text, Relationship } = require('@k5js/fields');
 const cuid = require('cuid');
 const {
   multiAdapterRunners,
   setupServer,
   graphqlRequest,
   networkedGraphqlRequest,
-} = require('@keystonejs/test-utils');
+} = require('@k5js/test-utils');
 
 function setupKeystone(adapterName) {
   return setupServer({

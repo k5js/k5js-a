@@ -1,5 +1,5 @@
-import { colors } from '@arch-ui/theme';
-import { alpha, darken } from '@arch-ui/color-utils';
+import { colors } from '@k5ui/theme';
+import { alpha, darken } from '@k5ui/color-utils';
 
 const boldAppearance = {
   default: {

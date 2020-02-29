@@ -2,8 +2,8 @@
 
 import { jsx } from '@emotion/core';
 
-import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@arch-ui/fields';
-import { Input } from '@arch-ui/input';
+import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@k5ui/fields';
+import { Input } from '@k5ui/input';
 
 const UuidField = ({ onChange, autoFocus, field, errors, value: serverValue }) => {
   const handleChange = event => {

@@ -8,7 +8,7 @@ import {
   ListOrderedIcon,
   ListUnorderedIcon,
   FileMediaIcon,
-} from '@arch-ui/icons';
+} from '@k5ui/icons';
 
 export let getTools = cm => {
   function toggleBefore(insertion) {

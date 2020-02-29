@@ -6,8 +6,8 @@ import flushable from 'flushable';
 import styled from '@emotion/styled';
 import { Popper } from 'react-popper';
 
-import { TransitionProvider, fade } from '@arch-ui/modal-utils';
-import { colors, gridSize } from '@arch-ui/theme';
+import { TransitionProvider, fade } from '@k5ui/modal-utils';
+import { colors, gridSize } from '@k5ui/theme';
 
 // ==============================
 // Styled Component

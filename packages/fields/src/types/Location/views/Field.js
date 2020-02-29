@@ -2,8 +2,8 @@
 import { jsx } from '@emotion/core';
 import { useState } from 'react';
 import { useToasts } from 'react-toast-notifications';
-import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@arch-ui/fields';
-import Select from '@arch-ui/select';
+import { FieldContainer, FieldLabel, FieldDescription, FieldInput } from '@k5ui/fields';
+import Select from '@k5ui/select';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 const LocationField = ({ field, value: serverValue, errors, onChange, google, renderContext }) => {

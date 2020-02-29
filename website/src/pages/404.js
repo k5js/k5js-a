@@ -2,7 +2,7 @@
 
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx, Global } from '@emotion/core';
-import { globalStyles, gridSize } from '@arch-ui/theme';
+import { globalStyles, gridSize } from '@k5ui/theme';
 import { SkipNavContent } from '@reach/skip-nav';
 
 import Layout from '../templates/layout';

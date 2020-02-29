@@ -1,5 +1,5 @@
-const { multiAdapterRunners, setupServer, graphqlRequest } = require('@keystonejs/test-utils');
-const { Text, DateTime } = require('@keystonejs/fields');
+const { multiAdapterRunners, setupServer, graphqlRequest } = require('@k5js/test-utils');
+const { Text, DateTime } = require('@k5js/fields');
 const cuid = require('cuid');
 
 function setupKeystone(adapterName) {

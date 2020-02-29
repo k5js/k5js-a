@@ -1,6 +1,6 @@
 import React from 'react';
 import { format } from 'date-fns';
-import { DayTimePicker } from '@arch-ui/day-picker';
+import { DayTimePicker } from '@k5ui/day-picker';
 import { stringifyDate, parseDate } from './utils';
 
 const CalendarDayFilterView = props => {

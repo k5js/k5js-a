@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { Button } from '@arch-ui/button';
-import Confirm from '@arch-ui/confirm';
+import { Button } from '@k5ui/button';
+import Confirm from '@k5ui/confirm';
 
 export default function DeleteManyModal({ isOpen, itemIds, list, onClose, onDelete }) {
   const [deleteItems, { loading }] = useMutation(list.deleteManyMutation);

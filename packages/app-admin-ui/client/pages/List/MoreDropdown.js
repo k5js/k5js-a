@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { FoldIcon, KebabVerticalIcon, UnfoldIcon, ZapIcon } from '@arch-ui/icons';
-import { CONTAINER_GUTTER, CONTAINER_WIDTH } from '@arch-ui/layout';
-import { A11yText } from '@arch-ui/typography';
-import { IconButton } from '@arch-ui/button';
-import Dropdown from '@arch-ui/dropdown';
-import { useMeasure } from '@arch-ui/hooks';
+import { FoldIcon, KebabVerticalIcon, UnfoldIcon, ZapIcon } from '@k5ui/icons';
+import { CONTAINER_GUTTER, CONTAINER_WIDTH } from '@k5ui/layout';
+import { A11yText } from '@k5ui/typography';
+import { IconButton } from '@k5ui/button';
+import Dropdown from '@k5ui/dropdown';
+import { useMeasure } from '@k5ui/hooks';
 
 import { useReset } from './dataHooks';
 

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { useState, useRef, useCallback, useLayoutEffect, Fragment } from 'react';
-import { PlusIcon } from '@arch-ui/icons';
+import { PlusIcon } from '@k5ui/icons';
 import { type as defaultType } from './blocks/paragraph';
 
 const getSelectedElement = () => {

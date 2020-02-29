@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 
-import { colors } from '@arch-ui/theme';
+import { colors } from '@k5ui/theme';
 import { mq } from '../utils/media';
 
 const SocialIconsNav = props => (
