@@ -1,5 +1,5 @@
 {
-  "name": "@arch-ui/day-picker",
+  "name": "@k5ui/day-picker",
   "description": "Day Picker UI as used in @keystonejs Admin UI.",
   "version": "0.0.19",
   "author": "Jed Watson",
@@ -12,11 +12,11 @@
     "react": "^16.12.0"
   },
   "dependencies": {
-    "@arch-ui/icons": "^0.0.9",
-    "@arch-ui/input": "^0.1.5",
-    "@arch-ui/select": "^0.1.4",
-    "@arch-ui/theme": "^0.0.8",
-    "@arch-ui/typography": "^0.0.13",
+    "@k5ui/icons": "^0.0.0",
+    "@k5ui/input": "^0.0.0",
+    "@k5ui/select": "^0.0.0",
+    "@k5ui/theme": "^0.0.0",
+    "@k5ui/typography": "^0.0.0",
     "@babel/runtime": "^7.8.4",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",

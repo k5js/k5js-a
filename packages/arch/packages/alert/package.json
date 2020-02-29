@@ -1,5 +1,5 @@
 {
-  "name": "@arch-ui/alert",
+  "name": "@k5ui/alert",
   "description": "Alert component as used in @keystonejs Admin UI.",
   "version": "0.0.13",
   "author": "Jed Watson",
@@ -12,7 +12,7 @@
     "react": "^16.12.0"
   },
   "dependencies": {
-    "@arch-ui/theme": "^0.0.8",
+    "@k5ui/theme": "^0.0.0",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27"
   },

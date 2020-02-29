@@ -1,5 +1,5 @@
 {
-  "name": "@arch-ui/button",
+  "name": "@k5ui/button",
   "description": "Button Components as used in @keystonejs Admin UI.",
   "version": "0.0.14",
   "author": "Jed Watson",
@@ -12,10 +12,10 @@
     "react": "^16.12.0"
   },
   "dependencies": {
-    "@arch-ui/color-utils": "^0.0.1",
-    "@arch-ui/common": "^0.0.9",
-    "@arch-ui/loading": "^0.0.13",
-    "@arch-ui/theme": "^0.0.8",
+    "@k5ui/color-utils": "^0.0.0",
+    "@k5ui/common": "^0.0.0",
+    "@k5ui/loading": "^0.0.0",
+    "@k5ui/theme": "^0.0.0",
     "@babel/runtime": "^7.8.4",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",

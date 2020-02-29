@@ -1,5 +1,5 @@
 {
-  "name": "@arch-ui/tooltip",
+  "name": "@k5ui/tooltip",
   "description": "Tooltip UI as used in @keystonejs Admin UI.",
   "version": "0.1.7",
   "author": "Jed Watson",
@@ -14,8 +14,8 @@
     "react-dom": "^16.12.0"
   },
   "dependencies": {
-    "@arch-ui/modal-utils": "^1.0.7",
-    "@arch-ui/theme": "^0.0.8",
+    "@k5ui/modal-utils": "^0.0.0",
+    "@k5ui/theme": "^0.0.0",
     "@babel/runtime": "^7.8.4",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",

@@ -1,5 +1,5 @@
 {
-  "name": "@keystonejs/test-utils",
+  "name": "@k5js/test-utils",
   "description": "Common utilities used while testing @keystonejs/* packages.",
   "version": "5.1.1",
   "author": "The KeystoneJS Development Team",
@@ -8,10 +8,10 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "@keystonejs/adapter-knex": "^6.3.1",
-    "@keystonejs/adapter-mongoose": "^5.2.0",
-    "@keystonejs/app-graphql": "^5.1.1",
-    "@keystonejs/keystone": "^5.6.0",
+    "@k5js/adapter-knex": "^0.0.0",
+    "@k5js/adapter-mongoose": "^0.0.0",
+    "@k5js/app-graphql": "^0.0.0",
+    "@k5js/keystone": "^0.0.0",
     "express": "^4.17.1",
     "mongodb-memory-server": "^6.2.4",
     "p-finally": "^2.0.1",

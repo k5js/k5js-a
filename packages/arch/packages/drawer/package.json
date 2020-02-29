@@ -1,5 +1,5 @@
 {
-  "name": "@arch-ui/drawer",
+  "name": "@k5ui/drawer",
   "description": "Drawer Portal UI as used in @keystonejs Admin UI.",
   "version": "0.0.17",
   "author": "Jed Watson",
@@ -14,10 +14,10 @@
     "react-dom": "^16.12.0"
   },
   "dependencies": {
-    "@arch-ui/color-utils": "^0.0.1",
-    "@arch-ui/modal-utils": "^1.0.7",
-    "@arch-ui/theme": "^0.0.8",
-    "@arch-ui/typography": "^0.0.13",
+    "@k5ui/color-utils": "^0.0.0",
+    "@k5ui/modal-utils": "^0.0.0",
+    "@k5ui/theme": "^0.0.0",
+    "@k5ui/typography": "^0.0.0",
     "@babel/runtime": "^7.8.4",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
