@@ -1,7 +1,7 @@
 {
   "name": "@k5ui/fields",
   "description": "Form Field Components used in @keystonejs Admin UI.",
-  "version": "2.1.2",
+  "version": "0.0.0",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/fields.cjs.js",

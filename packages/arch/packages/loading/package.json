@@ -1,7 +1,7 @@
 {
   "name": "@k5ui/loading",
   "description": "Loading UI as used in @keystonejs Admin UI.",
-  "version": "0.0.13",
+  "version": "0.0.0",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/loading.cjs.js",

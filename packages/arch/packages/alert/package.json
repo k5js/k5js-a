@@ -1,7 +1,7 @@
 {
   "name": "@k5ui/alert",
   "description": "Alert component as used in @keystonejs Admin UI.",
-  "version": "0.0.13",
+  "version": "0.0.0",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/alert.cjs.js",

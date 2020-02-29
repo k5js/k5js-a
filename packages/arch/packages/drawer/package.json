@@ -1,7 +1,7 @@
 {
   "name": "@k5ui/drawer",
   "description": "Drawer Portal UI as used in @keystonejs Admin UI.",
-  "version": "0.0.17",
+  "version": "0.0.0",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/drawer.cjs.js",

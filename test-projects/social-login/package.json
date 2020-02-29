@@ -2,7 +2,7 @@
   "name": "@k5js/cypress-project-social-login",
   "description": "A KeystoneJS demo project for integration testing. See @keystonejs/keystone for more.",
   "private": true,
-  "version": "5.1.0",
+  "version": "0.0.0",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
   "engines": {
