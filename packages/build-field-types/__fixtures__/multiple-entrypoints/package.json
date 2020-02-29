@@ -1,6 +1,6 @@
 {
   "name": "multiple-entrypoints",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "dist/multiple-entrypoints.cjs.js",
   "license": "MIT",
   "private": true,
