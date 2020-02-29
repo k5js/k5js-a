@@ -12,11 +12,11 @@
     "react": "^16.12.0"
   },
   "dependencies": {
-    "@k5ui/color-utils": "^0.0.0",
-    "@k5ui/theme": "^0.0.0",
     "@babel/runtime": "^7.8.4",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
+    "@k5ui/color-utils": "^0.0.0",
+    "@k5ui/theme": "^0.0.0",
     "react-scrolllock": "^4.0.1",
     "react-transition-group": "^4.3.0"
   },

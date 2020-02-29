@@ -12,14 +12,14 @@
     "react": "^16.12.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.8.4",
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
     "@k5ui/icons": "^0.0.0",
     "@k5ui/input": "^0.0.0",
     "@k5ui/select": "^0.0.0",
     "@k5ui/theme": "^0.0.0",
     "@k5ui/typography": "^0.0.0",
-    "@babel/runtime": "^7.8.4",
-    "@emotion/core": "^10.0.27",
-    "@emotion/styled": "^10.0.27",
     "chrono-node": "^1.3.5",
     "date-fns": "^1.30.1",
     "intersection-observer": "^0.5.1",

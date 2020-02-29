@@ -12,8 +12,8 @@
     "react": "^16.12.0"
   },
   "dependencies": {
-    "@k5ui/theme": "^0.0.0",
     "@babel/runtime": "^7.8.4",
+    "@k5ui/theme": "^0.0.0",
     "react-select": "^3.0.8"
   },
   "module": "dist/select.esm.js"

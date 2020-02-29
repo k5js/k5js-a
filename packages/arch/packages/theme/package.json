@@ -6,8 +6,8 @@
   "license": "MIT",
   "main": "dist/theme.cjs.js",
   "dependencies": {
-    "@k5ui/color-utils": "^0.0.0",
-    "@babel/runtime": "^7.8.4"
+    "@babel/runtime": "^7.8.4",
+    "@k5ui/color-utils": "^0.0.0"
   },
   "module": "dist/theme.esm.js"
 }

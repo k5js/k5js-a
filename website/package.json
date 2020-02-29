@@ -16,13 +16,13 @@
     "build": "gatsby build"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
+    "@emotion/weak-memoize": "^0.2.5",
     "@k5ui/icons": "^0.0.0",
     "@k5ui/input": "^0.0.0",
     "@k5ui/select": "^0.0.0",
     "@k5ui/theme": "^0.0.0",
-    "@emotion/core": "^10.0.27",
-    "@emotion/styled": "^10.0.27",
-    "@emotion/weak-memoize": "^0.2.5",
     "@mapbox/rehype-prism": "^0.3.1",
     "@mdx-js/mdx": "^1.0.20",
     "@mdx-js/react": "^1.0.20",

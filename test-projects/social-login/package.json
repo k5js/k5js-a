@@ -15,8 +15,6 @@
     "cypress:run": "exit 0"
   },
   "dependencies": {
-    "@k5ui/fields": "^0.0.0",
-    "@k5ui/input": "^0.0.0",
     "@k5js/adapter-mongoose": "^0.0.0",
     "@k5js/app-admin-ui": "^0.0.0",
     "@k5js/app-graphql": "^0.0.0",
@@ -26,6 +24,8 @@
     "@k5js/fields": "^0.0.0",
     "@k5js/file-adapters": "^0.0.0",
     "@k5js/keystone": "^0.0.0",
+    "@k5ui/fields": "^0.0.0",
+    "@k5ui/input": "^0.0.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "passport-wordpress": "^0.0.4",
