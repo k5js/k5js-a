@@ -12,13 +12,7 @@ import { Button } from '@k5ui/button';
 import { AutocompleteCaptor } from '@k5ui/input';
 import { Card } from '@k5ui/card';
 import { gridSize } from '@k5ui/theme';
-import {
-  mapKeys,
-  arrayToObject,
-  omitBy,
-  captureSuspensePromises,
-  countArrays,
-} from '@k5js/utils';
+import { mapKeys, arrayToObject, omitBy, captureSuspensePromises, countArrays } from '@k5js/utils';
 
 import CreateItemModal from '../../components/CreateItemModal';
 import DeleteItemModal from '../../components/DeleteItemModal';

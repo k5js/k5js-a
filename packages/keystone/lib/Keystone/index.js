@@ -23,11 +23,7 @@ const {
   validateCustomAccessControl,
   parseCustomAccess,
 } = require('@k5js/access-control');
-const {
-  startAuthedSession,
-  endAuthedSession,
-  commonSessionMiddleware,
-} = require('@k5js/session');
+const { startAuthedSession, endAuthedSession, commonSessionMiddleware } = require('@k5js/session');
 const { logger } = require('@k5js/logger');
 
 const {
