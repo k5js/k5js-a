@@ -2,7 +2,7 @@
   "name": "@k5js/example-projects-starter",
   "description": "An example KeystoneJS project with a User list and Authentication.",
   "private": true,
-  "version": "5.0.1",
+  "version": "0.0.0",
   "author": "The KeystoneJS Development Team",
   "repository": "https://github.com/keystonejs/keystone.git",
   "homepage": "https://github.com/keystonejs/keystone",

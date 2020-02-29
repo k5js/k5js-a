@@ -1,6 +1,6 @@
 {
   "name": "common-dependency-two-entrypoints",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "dist/common-dependency-two-entrypoints.cjs.js",
   "license": "MIT",
   "private": true,

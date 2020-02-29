@@ -2,7 +2,7 @@
   "name": "@k5js/demo-project-blog",
   "description": "An example KeystoneJS project showcasing a Blogging Site.",
   "private": true,
-  "version": "5.2.1",
+  "version": "0.0.0",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
   "engines": {

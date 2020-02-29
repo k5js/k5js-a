@@ -1,7 +1,7 @@
 {
   "name": "@k5ui/theme",
   "description": "Common Theme as used throughout @arch-ui packages and @keystonejs Admin UI.",
-  "version": "0.0.8",
+  "version": "0.0.0",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/theme.cjs.js",

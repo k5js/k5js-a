@@ -1,7 +1,7 @@
 {
   "name": "@k5js/oembed-adapters",
   "description": "Adapters for fetching oEmbed data for the OEmbed field type",
-  "version": "5.1.1",
+  "version": "0.0.0",
   "main": "dist/oembed-adapters.cjs.js",
   "module": "dist/oembed-adapters.esm.js",
   "repository": "https://github.com/keystonejs/keystone.git",

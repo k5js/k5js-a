@@ -1,7 +1,7 @@
 {
   "name": "@k5js/fields-markdown",
   "description": "KeystoneJS Markdown Field Type",
-  "version": "5.1.1",
+  "version": "0.0.0",
   "author": "The KeystoneJS Development Team",
   "license": "MIT",
   "engines": {

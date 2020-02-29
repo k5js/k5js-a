@@ -1,7 +1,7 @@
 {
   "name": "@k5ui/filters",
   "description": "Filter UI as used in @keystonejs Admin UI.",
-  "version": "0.0.16",
+  "version": "0.0.0",
   "author": "Jed Watson",
   "license": "MIT",
   "main": "dist/filters.cjs.js",
