@@ -1,9 +1,8 @@
 import querystring from 'querystring';
 import List from '../../classes/List';
-// $TSFixMe flow doesn't recognise the `*/Controller` entry point
-import { FieldControllerType } from '@k5js/fields/Controller';
 import { pseudoLabelField } from './FieldSelect';
 
+type FieldControllerType = $TSFixMe;
 type DirectionType = 'ASC' | 'DESC';
 export type SortByType = {
   field: {

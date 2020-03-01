@@ -9,10 +9,10 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks', 'jest', 'cypress', 'import', 'emotion'],
   settings: {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
     },
     react: {
       version: 'detect',
