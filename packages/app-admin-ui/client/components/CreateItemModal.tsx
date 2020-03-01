@@ -23,7 +23,7 @@ import PageLoading from './PageLoading';
 import { useList } from '../providers/List';
 import { validateFields, handleCreateUpdateMutationError } from '../util';
 
-let Render = ({ children }) => children();
+const Render = ({ children }) => children();
 
 type Props = {
   createItem: Function;
@@ -36,8 +36,8 @@ type Props = {
 const getValues = (fieldsObject, item) => mapKeys(fieldsObject, field => field.serialize(item));
 
 function useEventCallback(callback) {
-  let callbackRef = useRef(callback);
-  let cb = useCallback((...args) => {
+  const callbackRef = useRef(callback);
+  const cb = useCallback((...args) => {
     return callbackRef.current(...args);
   }, []);
   useEffect(() => {
@@ -186,9 +186,9 @@ function CreateItemModal({ prefillData = {}, isLoading, createItem, onClose, onC
               return creatable.map((field, i) => (
                 <Render key={field.path}>
                   {() => {
-                    let [Field] = field.adminMeta.readViews([field.views.Field]);
+                    const [Field] = field.adminMeta.readViews([field.views.Field]);
                     // eslint-disable-next-line react-hooks/rules-of-hooks
-                    let onChange = useCallback(value => {
+                    const onChange = useCallback(value => {
                       setItem(item => ({
                         ...item,
                         [field.path]: value,

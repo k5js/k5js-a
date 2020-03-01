@@ -48,7 +48,7 @@ const adminMeta = {
 // so this function should only be called inside a react render
 function readAdminMeta() {
   if (!hasInitialisedLists) {
-    let viewsToLoad = new Set();
+    const viewsToLoad = new Set();
     if (typeof hookView === 'function') {
       viewsToLoad.add(hookView);
     }

@@ -65,9 +65,9 @@ export const DisclosureArrow = styled.span<{ size? }>(({ size = '0.3em' }) => ({
 type Props = {
   buttonLabel?: string;
   children?: $TSFixMe;
-  component?: ComponentType<any>;
-  innerRef?: Ref<any>;
-  bodyRef?: Ref<any>;
+  component?: ComponentType<$TSFixMe>;
+  innerRef?: Ref<$TSFixMe>;
+  bodyRef?: Ref<$TSFixMe>;
   footerContent?: $TSFixMe;
   headerAfter?: Node;
   headerBefore?: Node;

@@ -7,7 +7,7 @@ type Height = number | string;
 type Props = {
   autoScroll?: boolean | HTMLElement;
   initialHeight?: Height;
-  onChange?: (height: $TSFixMe) => any;
+  onChange?: (height: $TSFixMe) => $TSFixMe;
   render?: $TSFixMe;
   style?: $TSFixMe;
   node?: $TSFixMe;

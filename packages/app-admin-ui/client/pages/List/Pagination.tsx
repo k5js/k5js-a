@@ -41,7 +41,7 @@ export function getPaginationLabel({
   plural = 'Items',
   singular = 'Item',
   total,
-}: any) {
+}: $TSFixMe) {
   if (!total) {
     return `No ${plural}`;
   }

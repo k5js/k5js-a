@@ -25,8 +25,8 @@ const SelectedCount = styled.div({
 
 type Props = {
   list: List;
-  onDeleteMany: (x0?: any) => void;
-  onUpdateMany: (x0?: any) => void;
+  onDeleteMany: (x0?: $TSFixMe) => void;
+  onUpdateMany: (x0?: $TSFixMe) => void;
   selectedItems: string[];
   pageSize?: number;
   totalItems?: number;

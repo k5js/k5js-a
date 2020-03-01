@@ -26,8 +26,8 @@ import InvalidRoutePage from './pages/InvalidRoute';
 import SignoutPage from './pages/Signout';
 
 export const KeystoneAdminUI = () => {
-  let adminMeta = useAdminMeta();
-  let { adminPath, signinPath, signoutPath, apiPath, pages, hooks } = adminMeta;
+  const adminMeta = useAdminMeta();
+  const { adminPath, signinPath, signoutPath, apiPath, pages, hooks } = adminMeta;
 
   const apolloClient = useMemo(() => new ApolloClient({ uri: apiPath }), [apiPath]);
 

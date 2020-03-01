@@ -19,7 +19,7 @@ const HeaderInset = props => (
   <div css={{ paddingLeft: gridSize * 2, paddingRight: gridSize * 2 }} {...props} />
 );
 const ItemId = () => {
-  let { id } = useItem();
+  const { id } = useItem();
   return <IdCopy id={id} />;
 };
 
@@ -29,7 +29,7 @@ type Props = {
 };
 
 const AddNewItem = () => {
-  let {
+  const {
     list: { access },
     openCreateItemModal,
   } = useList();
@@ -51,11 +51,11 @@ const AddNewItem = () => {
   );
 };
 
-export let ItemTitle = memo(function ItemTitle({ titleText, adminPath }: Props) {
-  let { list } = useList();
+export const ItemTitle = memo(function ItemTitle({ titleText, adminPath }: Props) {
+  const { list } = useList();
   const listHref = `${adminPath}/${list.path}`;
-  let uiHooks = useUIHooks();
-  let { itemHeaderActions } = uiHooks;
+  const uiHooks = useUIHooks();
+  const { itemHeaderActions } = uiHooks;
   return (
     <HeaderInset>
       <PageTitle>{titleText}</PageTitle>

@@ -10,7 +10,7 @@ type Props = {
   itemIds: string[];
   list: List;
   onClose: () => void;
-  onDelete: (x0: Promise<any>) => void;
+  onDelete: (x0: Promise<$TSFixMe>) => void;
 };
 
 export default function DeleteManyModal({ isOpen, itemIds, list, onClose, onDelete }) {

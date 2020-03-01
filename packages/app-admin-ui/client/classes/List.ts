@@ -14,26 +14,26 @@ export default class List {
   fields: $TSFixMe;
   fieldsByPath: { [index: string]: $TSFixMe };
   gqlNames: {
-    createMutationName: any;
-    createManyMutationName: any;
-    updateMutationName: any;
-    updateManyMutationName: any;
-    deleteMutationName: any;
-    deleteManyMutationName: any;
-    createInputName: any;
-    createManyInputName: any;
-    updateInputName: any;
-    updateManyInputName: any;
-    itemQueryName: any;
-    listQueryName: any;
-    listQueryMetaName: any;
+    createMutationName: $TSFixMe;
+    createManyMutationName: $TSFixMe;
+    updateMutationName: $TSFixMe;
+    updateManyMutationName: $TSFixMe;
+    deleteMutationName: $TSFixMe;
+    deleteManyMutationName: $TSFixMe;
+    createInputName: $TSFixMe;
+    createManyInputName: $TSFixMe;
+    updateInputName: $TSFixMe;
+    updateManyInputName: $TSFixMe;
+    itemQueryName: $TSFixMe;
+    listQueryName: $TSFixMe;
+    listQueryMetaName: $TSFixMe;
   };
   createMutation: $TSFixMe;
-  createManyMutation: any;
-  updateMutation: any;
-  updateManyMutation: any;
-  deleteMutation: any;
-  deleteManyMutation: any;
+  createManyMutation: $TSFixMe;
+  updateMutation: $TSFixMe;
+  updateManyMutation: $TSFixMe;
+  deleteMutation: $TSFixMe;
+  deleteManyMutation: $TSFixMe;
   singular: string;
   plural: string;
   constructor(config, adminMeta, views) {
@@ -100,7 +100,7 @@ export default class List {
   }
 
   buildQuery(queryName, queryArgs = '', fields = []) {
-    let requiredFields = ['id', '_label_'];
+    const requiredFields = ['id', '_label_'];
     return `
       ${queryName}${queryArgs} {
         ${requiredFields
