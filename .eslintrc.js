@@ -9,6 +9,11 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks', 'jest', 'cypress', 'import', 'emotion'],
   settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
     react: {
       version: 'detect',
     },
@@ -85,6 +90,39 @@ module.exports = {
       files: ['packages/build-field-types/__fixtures__/**/*.js'],
       rules: {
         'import/no-unresolved': 'off',
+      },
+    },
+    {
+      files: ['packages/app-admin-ui/**/*.ts', 'packages/app-admin-ui/**/*.tsx'],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: 'packages/app-admin-ui/',
+      },
+      plugins: [
+        '@typescript-eslint',
+        'react',
+        'react-hooks',
+        'jest',
+        'cypress',
+        'import',
+        'emotion',
+      ],
+      extends: [
+        'plugin:jest/recommended',
+        'eslint:recommended',
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+      ],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/indent': 'off',
+        '@typescript-eslint/prefer-interface': 'off',
+        '@typescript-eslint/explicit-member-accessibility': 'off',
+        'no-case-declarations': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        'no-prototype-builtins': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
       },
     },
   ],
