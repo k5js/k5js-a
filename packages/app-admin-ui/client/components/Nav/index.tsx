@@ -296,8 +296,8 @@ function PrimaryNavItems({
   );
 }
 
-let PrimaryNavContent = ({ mouseIsOverNav }) => {
-  let {
+const PrimaryNavContent = ({ mouseIsOverNav }) => {
+  const {
     adminPath,
     getListByKey,
     listKeys,

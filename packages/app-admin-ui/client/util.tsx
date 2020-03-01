@@ -44,7 +44,7 @@ export function toastItemSuccess({ addToast }, item, message = 'Success') {
 }
 
 export function toastError({ addToast, options = {} }, error) {
-  const [title, ...rest] = error.message.split(/\:/);
+  const [title, ...rest] = error.message.split(/:/);
   const toastContent = rest.length ? (
     <div>
       <strong>{title.trim()}</strong>

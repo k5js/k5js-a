@@ -28,8 +28,8 @@ const Render = ({ children }) => children();
 const getValues = (fieldsObject, item) => mapKeys(fieldsObject, field => field.serialize(item));
 
 function useEventCallback(callback) {
-  let callbackRef = useRef(callback);
-  let cb = useCallback((...args) => {
+  const callbackRef = useRef(callback);
+  const cb = useCallback((...args) => {
     return callbackRef.current(...args);
   }, []);
   useEffect(() => {
@@ -45,7 +45,6 @@ type Props = {
   onClose: Function;
   onCreate: Function;
   isLoading: boolean;
-  isOpen: boolean;
 };
 
 function CreateItemModal({ prefillData = {}, isLoading, createItem, onClose, onCreate }: Props) {
@@ -188,9 +187,9 @@ function CreateItemModal({ prefillData = {}, isLoading, createItem, onClose, onC
               return creatable.map((field, i) => (
                 <Render key={field.path}>
                   {() => {
-                    let [Field] = field.adminMeta.readViews([field.views.Field]);
+                    const [Field] = field.adminMeta.readViews([field.views.Field]);
                     // eslint-disable-next-line react-hooks/rules-of-hooks
-                    let onChange = useCallback(value => {
+                    const onChange = useCallback(value => {
                       setItem(item => ({
                         ...item,
                         [field.path]: value,

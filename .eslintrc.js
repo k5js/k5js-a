@@ -9,6 +9,11 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks', 'jest', 'cypress', 'import', 'emotion'],
   settings: {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    },
     react: {
       version: 'detect',
     },
@@ -110,11 +115,14 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
       ],
       rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/indent': 'off',
         '@typescript-eslint/prefer-interface': 'off',
-        'import/no-unresolved': 'off',
         '@typescript-eslint/explicit-member-accessibility': 'off',
         'no-case-declarations': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        'no-prototype-builtins': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
       },
     },
   ],

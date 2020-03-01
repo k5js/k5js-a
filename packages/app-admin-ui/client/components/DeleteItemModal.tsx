@@ -12,8 +12,8 @@ type Props = {
     _label_: string;
     id: string;
   };
-  onClose: (x0?: any) => void;
-  onDelete: (x0?: Promise<any>) => void;
+  onClose: (x0?: $TSFixMe) => void;
+  onDelete: (x0?: Promise<$TSFixMe>) => void;
 };
 
 export default function DeleteItemModal({ isOpen, item, list, onClose, onDelete }: Props) {
