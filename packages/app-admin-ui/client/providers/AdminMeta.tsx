@@ -71,7 +71,7 @@ function readAdminMeta() {
     });
     hasInitialisedLists = true;
   }
-  let hooks = {};
+  let hooks: $TSFixMe = {};
   if (typeof hookView === 'function') {
     [hooks] = readViews([hookView]);
   }

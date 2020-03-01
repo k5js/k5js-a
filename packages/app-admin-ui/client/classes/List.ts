@@ -8,11 +8,15 @@ export const gqlCountQueries = lists => gql`{
 
 export default class List {
   config: $TSFixMe;
+  pages: $TSFixMe;
+  access: $TSFixMe;
+  adminConfig: $TSFixMe;
+  path: string;
   adminMeta: {
     readViews: Function;
   };
   fields: $TSFixMe;
-  fieldsByPath: { [index: string]: $TSFixMe };
+  _fieldsByPath: { [index: string]: $TSFixMe };
   gqlNames: {
     createMutationName: $TSFixMe;
     createManyMutationName: $TSFixMe;
@@ -132,7 +136,7 @@ export default class List {
 
   getQuery(args) {
     const { fields, filters, search, orderBy, skip, first } = args;
-    const sanatisedQueryArgs = Object.keys({ first, filters, search, skip, orderBy })
+    const sanatisedQueryArgs: $TSFixMe = Object.keys({ first, filters, search, skip, orderBy })
       .filter(key => args[key])
       .reduce((acc, key) => ({ ...acc, [key]: args[key] }), {});
     const queryArgs = List.getQueryArgs(sanatisedQueryArgs);
