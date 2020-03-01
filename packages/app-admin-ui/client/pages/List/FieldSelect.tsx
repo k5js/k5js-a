@@ -14,18 +14,6 @@ function getOptionValue(opt) {
 
 export const pseudoLabelField = { label: 'Label', path: '_label_' };
 
-/**
- * Why does this exist?
- * --------------------
- * Because fields can contain an `options` property, which react-select
- * interprets as an OptionGroup.
- *
- * How does it solve the problem?
- * ------------------------------
- * By removing the `options` property before passing fields on to react-select,
- * and returning it during `onChange`.
- */
-
 type FieldType = object;
 export type FieldSelectProps = {
   fields?: FieldType[];
@@ -40,7 +28,17 @@ export type FieldSelectProps = {
   components?: $TSFixMe;
 };
 
-export const pseudoLabelField: $TSFixMe = { label: 'Label', path: '_label_' };
+/**
+ * Why does this exist?
+ * --------------------
+ * Because fields can contain an `options` property, which react-select
+ * interprets as an OptionGroup.
+ *
+ * How does it solve the problem?
+ * ------------------------------
+ * By removing the `options` property before passing fields on to react-select,
+ * and returning it during `onChange`.
+ */
 
 export default class FieldSelect extends Component<FieldSelectProps> {
   constructor(props) {

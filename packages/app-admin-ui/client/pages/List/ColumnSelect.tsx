@@ -7,27 +7,9 @@ import { Popout, POPOUT_GUTTER } from '../../components/Popout';
 import { useList, useListColumns } from './dataHooks';
 import FieldSelect from './FieldSelect';
 
-// ==============================
-// Styled Components
-// ==============================
-
-export const ColumnOption = ({ children, isFocused, isSelected, selectProps, ...props }) => {
-  const { removeIsAllowed } = selectProps;
-
-  return (
-    <OptionPrimitive isFocused={isFocused} isSelected={isSelected} {...props}>
-      <span>{children}</span>
-      <CheckMark
-        isDisabled={isSelected && !removeIsAllowed}
-        isFocused={isFocused}
-        isSelected={isSelected}
-      />
-    </OptionPrimitive>
-  );
-};
-
 type Props = {
   listKey: string;
+  target: $TSFixMe;
 };
 
 export default function ColumnPopout({ listKey, target }: Props) {
@@ -52,3 +34,22 @@ export default function ColumnPopout({ listKey, target }: Props) {
     </Popout>
   );
 }
+
+// ==============================
+// Styled Components
+// ==============================
+
+export const ColumnOption = ({ children, isFocused, isSelected, selectProps, ...props }) => {
+  const { removeIsAllowed } = selectProps;
+
+  return (
+    <OptionPrimitive isFocused={isFocused} isSelected={isSelected} {...props}>
+      <span>{children}</span>
+      <CheckMark
+        isDisabled={isSelected && !removeIsAllowed}
+        isFocused={isFocused}
+        isSelected={isSelected}
+      />
+    </OptionPrimitive>
+  );
+};
