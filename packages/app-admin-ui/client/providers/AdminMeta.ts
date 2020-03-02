@@ -41,11 +41,6 @@ const adminMeta = {
   preloadViews,
 };
 
-const getListHooks = (hooks, listKey) => {
-  const lists = hooks.lists || {};
-  return lists[listKey] || {};
-};
-
 // it's important to note that List could throw a promise in it's constructor
 // technically List should never actually throw a promise since the views that
 // it needs are preloaded before the Lists are initialised
@@ -57,7 +52,7 @@ function readAdminMeta() {
     [hooks] = readViews([hookView]);
   }
   if (!hasInitialisedLists) {
-    let viewsToLoad = new Set();
+    const viewsToLoad = new Set();
     Object.values(pageViews).forEach(view => {
       viewsToLoad.add(view);
     });
@@ -71,7 +66,7 @@ function readAdminMeta() {
     // we want to load all of the field controllers, views and hooks upfront so we don't have a waterfall of requests
     readViews([...viewsToLoad]);
     listKeys.forEach(key => {
-      const list = new List(lists[key], adminMeta, views[key], getListHooks(hooks, key));
+      const list = new List(lists[key], adminMeta, views[key], hooks);
       listsByKey[key] = list;
       listsByPath[list.path] = list;
     });

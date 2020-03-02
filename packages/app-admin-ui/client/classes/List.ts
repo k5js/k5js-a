@@ -6,9 +6,8 @@ export const gqlCountQueries = lists => gql`{
   ${lists.map(list => list.countQuery()).join('\n')}
 }`;
 
-const getFieldViews = (hookViews, fieldPath) => {
-  const fieldViews = hookViews.views || {};
-  return fieldViews[fieldPath] || {};
+const getFieldHooks = (hookViews, fieldViews) => {
+  return { Field: hookViews[fieldViews['Field']], Cell: hookViews[fieldViews['Cell']], Filter: hookViews[fieldViews['Filter']] };
 };
 
 export default class List {
@@ -45,7 +44,7 @@ export default class List {
   deleteManyMutation: $TSFixMe;
   singular: string;
   plural: string;
-  constructor(config, adminMeta, views, listHooks = {}) {
+  constructor(config, adminMeta, views, listHooks: $TSFixMe = {}) {
     this.config = config;
     this.adminMeta = adminMeta;
 
@@ -59,7 +58,7 @@ export default class List {
         this,
         adminMeta,
         views[fieldConfig.path],
-        getFieldViews(listHooks, fieldConfig.path)
+        getFieldHooks(listHooks.views || {}, fieldConfig.views)
       );
     });
 

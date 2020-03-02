@@ -4,7 +4,7 @@ import { parseFieldAccess } from '@k5js/access-control';
 class Field {
   constructor(
     path,
-    { hooks = {}, isRequired, defaultValue, access, label, schemaDoc, adminDoc, ...config },
+    { hooks = {}, views = {}, isRequired, defaultValue, access, label, schemaDoc, adminDoc, ...config },
     { getListByKey, listKey, listAdapter, fieldAdapterClass, defaultAccess, schemaNames }
   ) {
     this.path = path;
@@ -18,6 +18,7 @@ class Field {
     this.hooks = hooks;
     this.getListByKey = getListByKey;
     this.listKey = listKey;
+    this.views = views;
     this.label = label || inflection.humanize(inflection.underscore(path));
     this.adapter = listAdapter.newFieldAdapter(
       fieldAdapterClass,
@@ -182,6 +183,7 @@ class Field {
         update: !!schemaAccess.update,
       },
       adminDoc: this.adminDoc,
+      views: this.views,
     });
   }
   extendAdminMeta(meta) {
