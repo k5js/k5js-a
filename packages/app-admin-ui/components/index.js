@@ -47,4 +47,9 @@ export { default as ScrollQuery } from '../client/components/ScrollQuery';
 export { default as ScrollToTop } from '../client/components/ScrollToTop';
 export { default as ToastContainer } from '../client/components/ToastContainer';
 export { default as UpdateManyItemsModal } from '../client/components/UpdateManyItemsModal';
-export { toastError, toastItemSuccess, validateFields } from '../client/util';
+export {
+  toastError,
+  toastItemSuccess,
+  validateFields,
+  handleCreateUpdateMutationError,
+} from '../client/util';
