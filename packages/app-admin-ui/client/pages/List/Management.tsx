@@ -28,7 +28,7 @@ const SelectedCount = styled.div({
 const UpdateItems = ({ selectedItems, onUpdateMany }) => {
   const [updateModalIsVisible, setUpdateModal] = useState(false);
 
-  let { list } = useList();
+  const { list } = useList();
   if (!list.access.update) return null;
   const handleUpdate = () => {
     setUpdateModal(false);
@@ -59,7 +59,7 @@ const UpdateItems = ({ selectedItems, onUpdateMany }) => {
 
 const DeleteItems = ({ selectedItems, onDeleteMany }: $TSFixMe) => {
   const [deleteModalIsVisible, setDeleteModal] = useState(false);
-  let { list } = useList();
+  const { list } = useList();
 
   if (!list.access.update) return null;
   const handleDelete = () => {
@@ -90,7 +90,8 @@ const DeleteItems = ({ selectedItems, onDeleteMany }: $TSFixMe) => {
 };
 
 const renderActions = ({ ...props }) => {
-  let { listManageActions } = useUIHooks();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { listManageActions } = useUIHooks();
 
   if (!ENABLE_DEV_FEATURES) return null;
 

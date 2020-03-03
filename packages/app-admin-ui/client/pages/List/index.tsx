@@ -36,7 +36,7 @@ const HeaderInset = props => (
 );
 
 const CreateItem = () => {
-  let {
+  const {
     list: { access },
     openCreateItemModal,
   } = useList();
@@ -80,7 +80,7 @@ export function ListLayout(props: LayoutProps) {
 
   const [selectedItems, onSelectChange] = useListSelect(items);
 
-  let { listHeaderActions } = useUIHooks();
+  const { listHeaderActions } = useUIHooks();
 
   // Mount with Persisted Search
   // ------------------------------
