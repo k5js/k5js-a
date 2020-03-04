@@ -30,6 +30,7 @@ import {
 } from '../../util';
 import { ItemTitle } from './ItemTitle';
 import { ItemProvider } from '../../providers/Item';
+import { useAdminMeta } from '../../providers/AdminMeta';
 
 const Render = ({ children }) => children();
 
@@ -55,16 +56,13 @@ const getRenderableFields = memoizeOne(list =>
 );
 
 type Props = {
-  item?: $TSFixMe;
   adminPath?: string;
-  history?: $TSFixMe;
   list?: $TSFixMe;
-  toast?: $TSFixMe;
+  item?: $TSFixMe;
+  itemErrors?: $TSFixMe;
   onUpdate?: $TSFixMe;
-  toastManager?: $TSFixMe;
   updateItem?: $TSFixMe;
   updateInProgress?: boolean;
-  itemErrors?: $TSFixMe;
 };
 
 const ItemDetails = ({
@@ -365,9 +363,11 @@ const ItemNotFound = ({ adminPath, errorMessage, list }) => (
   </PageError>
 );
 
-const ItemPage = ({ list, itemId, adminPath, getListByKey }) => {
-  const itemQuery = list.getItemQuery(itemId);
+const ItemPage = ({ list, itemId }) => {
+  const { adminPath, getListByKey } = useAdminMeta();
   const { addToast } = useToasts();
+
+  const itemQuery = list.getItemQuery(itemId);
 
   // network-only because the data we mutate with is important for display
   // in the UI, and may be different than what's in the cache

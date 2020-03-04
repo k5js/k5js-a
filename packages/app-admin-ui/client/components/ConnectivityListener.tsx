@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { withToastManager, Context } from 'react-toast-notifications';
+import { withToastManager } from 'react-toast-notifications';
 
 type Props = {
-  toastManager: Context;
+  toastManager: $TSFixMe;
 };
 
 type State = {

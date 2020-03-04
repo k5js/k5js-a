@@ -2,7 +2,6 @@ import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Button } from '@k5ui/button';
 import Confirm from '@k5ui/confirm';
-
 import List from '../classes/List';
 
 type Props = {
@@ -13,7 +12,7 @@ type Props = {
   onDelete: (x0: Promise<$TSFixMe>) => void;
 };
 
-export default function DeleteManyModal({ isOpen, itemIds, list, onClose, onDelete }) {
+export default function DeleteManyModal({ isOpen, itemIds, list, onClose, onDelete }: Props) {
   const [deleteItems, { loading }] = useMutation(list.deleteManyMutation);
   return (
     <Confirm

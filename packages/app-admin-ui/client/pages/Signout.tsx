@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
 import styled from '@emotion/styled';
-
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import { LoadingIndicator } from '@k5ui/loading';
 
 import KeystoneLogo from '../components/KeystoneLogo';
-
-import { LoadingIndicator } from '@k5ui/loading';
+import { useAdminMeta } from '../providers/AdminMeta';
 
 const Container = styled.div({
   alignItems: 'center',
@@ -52,7 +51,12 @@ const Spacer = styled.div({
   height: 120,
 });
 
-const SignedOutPage = ({ authStrategy: { listKey }, signinPath }) => {
+const SignedOutPage = () => {
+  const {
+    authStrategy: { listKey },
+    signinPath,
+  } = useAdminMeta();
+
   const UNAUTH_MUTATION = gql`
     mutation {
       unauthenticate: unauthenticate${listKey} {

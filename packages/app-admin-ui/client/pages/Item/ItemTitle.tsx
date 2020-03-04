@@ -23,11 +23,6 @@ const ItemId = () => {
   return <IdCopy id={id} />;
 };
 
-type Props = {
-  titleText?: string;
-  adminPath?: string;
-};
-
 const AddNewItem = () => {
   const {
     list: { access },
@@ -51,7 +46,12 @@ const AddNewItem = () => {
   );
 };
 
-export const ItemTitle = memo(function ItemTitle({ titleText, adminPath }: Props) {
+type Props = {
+  titleText?: string;
+  adminPath?: string;
+};
+
+export const ItemTitle = memo<Props>(function ItemTitle({ titleText, adminPath }: Props) {
   const { list } = useList();
   const listHref = `${adminPath}/${list.path}`;
   const uiHooks = useUIHooks();

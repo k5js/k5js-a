@@ -25,14 +25,6 @@ import { validateFields, handleCreateUpdateMutationError } from '../util';
 
 const Render = ({ children }) => children();
 
-type Props = {
-  createItem: Function;
-  onClose: Function;
-  onCreate: Function;
-  prefillData: $TSFixMe;
-  isLoading: boolean;
-};
-
 const getValues = (fieldsObject, item) => mapKeys(fieldsObject, field => field.serialize(item));
 
 function useEventCallback(callback) {
@@ -45,6 +37,14 @@ function useEventCallback(callback) {
   });
   return cb;
 }
+
+type Props = {
+  prefillData: $TSFixMe;
+  createItem: Function;
+  onClose: Function;
+  onCreate: Function;
+  isLoading: boolean;
+};
 
 function CreateItemModal({ prefillData = {}, isLoading, createItem, onClose, onCreate }: Props) {
   const { list, closeCreateItemModal, isCreateItemModalOpen } = useList();

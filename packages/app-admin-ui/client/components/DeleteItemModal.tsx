@@ -2,7 +2,6 @@ import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Button } from '@k5ui/button';
 import Confirm from '@k5ui/confirm';
-
 import List from '../classes/List';
 
 type Props = {

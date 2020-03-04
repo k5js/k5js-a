@@ -22,7 +22,6 @@ import DocTitle from '../../components/DocTitle';
 import ListTable from '../../components/ListTable';
 import PageError from '../../components/PageError';
 import { DisclosureArrow } from '../../components/Popout';
-
 import ColumnPopout from './ColumnSelect';
 import ActiveFilters from './Filters/ActiveFilters';
 import SortPopout from './SortSelect';
@@ -30,6 +29,7 @@ import Pagination, { getPaginationLabel } from './Pagination';
 import Search from './Search';
 import Management, { ManageToolbar } from './Management';
 import { useListFilter, useListSelect, useListSort, useListUrlState } from './dataHooks';
+import { useAdminMeta } from '../../providers/AdminMeta';
 import ListType from '../../classes/List';
 
 const HeaderInset = props => (
@@ -45,17 +45,18 @@ type LayoutProps = Props & {
   items: object[];
   itemCount: number;
   queryErrors: object[];
+  query: $TSFixMe;
 };
 
 export function ListLayout(props: LayoutProps) {
-  const { adminMeta, items, itemCount, queryErrors, routeProps, query } = props;
+  const { items, itemCount, queryErrors, routeProps, query } = props;
   const measureElementRef = useRef();
   const { list, openCreateItemModal } = useList();
   const { urlState } = useListUrlState(list.key);
   const { filters } = useListFilter(list.key);
   const [sortBy, handleSortChange] = useListSort(list.key);
 
-  const { adminPath } = adminMeta;
+  const { adminPath } = useAdminMeta();
   const { history, location } = routeProps;
   const { currentPage, fields, pageSize, search } = urlState;
 
