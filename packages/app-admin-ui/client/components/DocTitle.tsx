@@ -13,6 +13,6 @@ const DocTitle = ({ title }: Props) => {
   }, [title]);
 
   return null;
-}
+};
 
 export default DocTitle;

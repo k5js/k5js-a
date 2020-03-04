@@ -56,14 +56,14 @@ const getRenderableFields = memoizeOne(list =>
 );
 
 type Props = {
-  adminPath?:string;
-  list?:$TSFixMe;
+  adminPath?: string;
+  list?: $TSFixMe;
   item?: $TSFixMe;
   itemErrors?: $TSFixMe;
-  onUpdate?:$TSFixMe;
-  updateItem?:$TSFixMe;
+  onUpdate?: $TSFixMe;
+  updateItem?: $TSFixMe;
   updateInProgress?: boolean;
-}
+};
 
 const ItemDetails = ({
   adminPath,

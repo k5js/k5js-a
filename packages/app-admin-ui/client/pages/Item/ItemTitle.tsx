@@ -23,11 +23,6 @@ const ItemId = () => {
   return <IdCopy id={id} />;
 };
 
-type Props = {
-  titleText?: string;
-  adminPath?: string;
-};
-
 const AddNewItem = () => {
   const {
     list: { access },
@@ -54,7 +49,7 @@ const AddNewItem = () => {
 type Props = {
   titleText?: string;
   adminPath?: string;
-}
+};
 
 export const ItemTitle = memo<Props>(function ItemTitle({ titleText, adminPath }: Props) {
   const { list } = useList();

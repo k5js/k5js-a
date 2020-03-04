@@ -17,7 +17,7 @@ type Props = {
   adminPath?: string;
   lists?: $TSFixMe;
   data?: $TSFixMe;
-}
+};
 
 const HomePage = ({ lists, data, adminPath }: Props) => (
   <main>

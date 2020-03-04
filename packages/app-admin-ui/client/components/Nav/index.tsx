@@ -346,19 +346,19 @@ const Nav = ({ children }) => {
     setMouseIsOverNav(false);
   };
 
-    return (
-      <ResizeHandler isActive={mouseIsOverNav}>
-        {(resizeProps, clickProps, { isCollapsed, isDragging, width }) => {
-          const navWidth = isCollapsed ? 0 : width;
-          const makeResizeStyles: $TSFixMe = key => {
-            const pointers = isDragging ? { pointerEvents: 'none' } : null;
-            const transitions = isDragging
-              ? null
-              : {
-                  transition: `${camelToKebab(key)} ${TRANSITION_DURATION} ${TRANSITION_EASING}`,
-                };
-            return { [key]: navWidth, ...pointers, ...transitions };
-          };
+  return (
+    <ResizeHandler isActive={mouseIsOverNav}>
+      {(resizeProps, clickProps, { isCollapsed, isDragging, width }) => {
+        const navWidth = isCollapsed ? 0 : width;
+        const makeResizeStyles: $TSFixMe = key => {
+          const pointers = isDragging ? { pointerEvents: 'none' } : null;
+          const transitions = isDragging
+            ? null
+            : {
+                transition: `${camelToKebab(key)} ${TRANSITION_DURATION} ${TRANSITION_EASING}`,
+              };
+          return { [key]: navWidth, ...pointers, ...transitions };
+        };
 
         return (
           <PageWrapper>
