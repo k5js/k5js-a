@@ -1,5 +1,5 @@
-const { mergeWhereClause } = require('@keystonejs/utils');
-const { logger } = require('@keystonejs/logger');
+const { mergeWhereClause } = require('@k5js/utils');
+const { logger } = require('@k5js/logger');
 
 const { throwAccessDenied } = require('../List/graphqlErrors');
 
