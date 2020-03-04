@@ -35,7 +35,7 @@ export type SearchType = {
 
 const allowedSearchParams = ['currentPage', 'pageSize', 'search', 'fields', 'sortBy', 'filters'];
 
-const getSearchDefaults = props => {
+const getSearchDefaults = (props: Props): SearchType => {
   const { defaultColumns, defaultSort, defaultPageSize } = props.list.adminConfig;
 
   // Dynamic defaults
@@ -86,7 +86,7 @@ const parseSortBy = (sortBy, list) => {
   };
 };
 
-const encodeSortBy = sortBy => {
+const encodeSortBy = (sortBy: SortByType): string => {
   if (!sortBy) return '';
   const {
     direction,

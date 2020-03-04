@@ -15,13 +15,13 @@ import { KebabHorizontalIcon } from '@k5ui/icons';
 import Tooltip from '@k5ui/tooltip';
 import { applyRefs } from 'apply-ref';
 import { LoadingIndicator } from '@k5ui/loading';
+import { captureSuspensePromises } from '@k5js/utils';
 
 import CreateItemModal from '../../components/CreateItemModal';
 import DocTitle from '../../components/DocTitle';
 import ListTable from '../../components/ListTable';
 import PageError from '../../components/PageError';
 import { DisclosureArrow } from '../../components/Popout';
-
 import ColumnPopout from './ColumnSelect';
 import ActiveFilters from './Filters/ActiveFilters';
 import SortPopout from './SortSelect';
@@ -29,8 +29,6 @@ import Pagination, { getPaginationLabel } from './Pagination';
 import Search from './Search';
 import Management, { ManageToolbar } from './Management';
 import { useListFilter, useListSelect, useListSort, useListUrlState } from './dataHooks';
-import { captureSuspensePromises } from '@k5js/utils';
-
 import { useAdminMeta } from '../../providers/AdminMeta';
 import ListType from '../../classes/List';
 
@@ -106,7 +104,7 @@ export function ListLayout(props: LayoutProps) {
 
   const cypressCreateId = 'list-page-create-button';
   const cypressFiltersId = 'ks-list-active-filters';
-  
+
   const Render = ({ children }) => children();
   return (
     <main>

@@ -1,13 +1,10 @@
 import React, { Fragment } from 'react';
 import styled from '@emotion/styled';
-
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-
-import KeystoneLogo from '../components/KeystoneLogo';
-
 import { LoadingIndicator } from '@k5ui/loading';
 
+import KeystoneLogo from '../components/KeystoneLogo';
 import { useAdminMeta } from '../providers/AdminMeta';
 
 const Container = styled.div({

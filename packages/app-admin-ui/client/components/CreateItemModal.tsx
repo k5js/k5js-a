@@ -38,7 +38,6 @@ function useEventCallback(callback) {
   return cb;
 }
 
-
 type Props = {
   prefillData: $TSFixMe;
   createItem: Function;

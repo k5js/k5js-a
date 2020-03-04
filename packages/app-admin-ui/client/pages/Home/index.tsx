@@ -11,7 +11,6 @@ import PageError from '../../components/PageError';
 import { Box, HeaderInset } from './components';
 import ContainerQuery from '../../components/ContainerQuery';
 import { gqlCountQueries } from '../../classes/List';
-
 import { useAdminMeta } from '../../providers/AdminMeta';
 
 type Props = {

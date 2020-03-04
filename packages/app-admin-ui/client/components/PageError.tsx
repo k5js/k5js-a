@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import React, { ElementType } from 'react';
+import { ElementType } from 'react';
 
 import { StopIcon } from '@k5ui/icons';
 import { colors } from '@k5ui/theme';

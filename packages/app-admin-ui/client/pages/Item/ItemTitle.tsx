@@ -23,6 +23,11 @@ const ItemId = () => {
   return <IdCopy id={id} />;
 };
 
+type Props = {
+  titleText?: string;
+  adminPath?: string;
+};
+
 const AddNewItem = () => {
   const {
     list: { access },

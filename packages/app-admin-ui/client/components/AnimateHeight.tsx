@@ -10,6 +10,7 @@ type Props = {
   onChange?: (height: $TSFixMe) => $TSFixMe;
   render?: $TSFixMe;
   style?: $TSFixMe;
+  node?: $TSFixMe;
 };
 type State = {
   height: Height;
@@ -20,13 +21,14 @@ function Memoize({ children, deps }) {
   return useMemo<$TSFixMe>(children, deps);
 }
 
-export default class AnimateHeight extends Component {
+export default class AnimateHeight extends Component<Props, State> {
   state = { height: this.props.initialHeight, isTransitioning: false };
   static defaultProps = {
     autoScroll: false,
     initialHeight: 0,
   };
   hasMounted = false;
+  node: $TSFixMe;
   scrollToTop = () => {
     const { autoScroll } = this.props;
     const element = autoScroll instanceof HTMLElement ? autoScroll : this.node;
